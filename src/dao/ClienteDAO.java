@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.Query;
 import entity.Perfil;
+import entity.Estado;
+import entity.Sexo;
 import entity.Cliente;
 
 public class ClienteDAO extends DAO {

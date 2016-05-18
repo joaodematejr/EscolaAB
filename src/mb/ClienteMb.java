@@ -1,7 +1,15 @@
 package mb;
 
 import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.event.ComponentSystemEvent;
@@ -9,6 +17,7 @@ import javax.faces.event.ComponentSystemEvent;
 import entity.Cliente;
 import rn.ClienteRN;
 
+@ViewScoped
 @ManagedBean
 public class ClienteMb {
 	private Cliente cliente;
@@ -76,6 +85,13 @@ public class ClienteMb {
 		clienteRN.salvar(cliente);
 		listaClientes = null;
 		return "";
+	}
+
+	public void carregarEdicao() {
+		if (editarId != null && !FacesContext.getCurrentInstance().getPartialViewContext().isAjaxRequest()) {
+			cliente = clienteRN.buscarPorId(editarId);
+		}
+
 	}
 
 }
