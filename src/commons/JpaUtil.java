@@ -15,7 +15,7 @@ public class JpaUtil {
 
 	public static void init() {
 		if (EMF == null) {
-			EMF = Persistence.createEntityManagerFactory("aprenda_ab");
+			EMF = Persistence.createEntityManagerFactory("escola_ab");
 		}
 	}
 

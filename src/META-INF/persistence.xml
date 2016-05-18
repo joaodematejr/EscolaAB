@@ -3,7 +3,7 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 
-	<persistence-unit name="aprenda_ab" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="escola_ab" transaction-type="RESOURCE_LOCAL">
 
 		<!-- provedor/implementacao do JPA -->
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
@@ -13,7 +13,7 @@
 		<properties>
 			<!-- dados da conexao -->
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/aprenda_ab" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/escola_ab" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="" />
 

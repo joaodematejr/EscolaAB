@@ -20,8 +20,10 @@ public class Cliente {
 	private String nome;
 	private String cpf;
 	private Date nascimento;
+	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
 	private String cep;
+	@Enumerated(EnumType.STRING)
 	private Estado estado;
 	private String endereco;
 	private String numero;
@@ -48,28 +50,12 @@ public class Cliente {
 		this.nascimento = nascimento;
 	}
 
-	public Sexo getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(Sexo sexo) {
-		this.sexo = sexo;
-	}
-
 	public String getCep() {
 		return cep;
 	}
 
 	public void setCep(String cep) {
 		this.cep = cep;
-	}
-
-	public Estado getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Estado estado) {
-		this.estado = estado;
 	}
 
 	public String getEndereco() {
@@ -148,8 +134,24 @@ public class Cliente {
 		return perfil;
 	}
 
+	public void setSexo(Sexo sexo) {
+		this.sexo = sexo;
+	}
+
+	public Sexo getSexo() {
+		return sexo;
+	}
+
 	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+
+	public Estado getEstado() {
+		return estado;
 	}
 
 	public String getNome() {
