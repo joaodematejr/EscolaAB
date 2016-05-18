@@ -25,7 +25,7 @@
 		<div class="col-md-9 col-md-9">
 			<h:form>
 				<h:dataTable value="#{clienteMb.listaClientes}" var="user"
-					styleClass="table table-hover">
+					styleClass="table table-bordered">
 					<f:facet name="header">Listagem</f:facet>
 					<h:column>
 						<f:facet name="header">ID</f:facet>
@@ -40,6 +40,7 @@
 						<h:outputText value="#{user.perfil}" />
 					</h:column>
 					<h:column>
+						<f:facet name="header">Açoes</f:facet>
 						<h:link styleClass="btn btn-default" outcome="/clientes"
 							value="Editar">
 							<f:param name="id" value="#{user.id}" />
