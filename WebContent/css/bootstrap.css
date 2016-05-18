@@ -73,6 +73,9 @@ sub, sup {
 	line-height: 0;
 	vertical-align: baseline;
 }
+#formulario2{
+	top: -5%;
+}
 
 sup {
 	top: -.5em;
