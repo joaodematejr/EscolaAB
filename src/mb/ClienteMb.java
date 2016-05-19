@@ -84,7 +84,7 @@ public class ClienteMb {
 	public String salvar() {
 		clienteRN.salvar(cliente);
 		listaClientes = null;
-		return "";
+		return "index.html";
 	}
 
 	public void carregarEdicao() {
