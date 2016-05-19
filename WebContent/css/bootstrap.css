@@ -360,6 +360,8 @@ td, th {
 
 .glyphicon-remove:before {
 	content: "\e014";
+	 color: red;
+    margin-left: 15px;
 }
 
 .glyphicon-zoom-in:before {
@@ -368,6 +370,7 @@ td, th {
 
 .glyphicon-zoom-out:before {
 	content: "\e016";
+	
 }
 
 .glyphicon-off:before {
@@ -632,11 +635,13 @@ td, th {
 
 .glyphicon-remove-sign:before {
 	content: "\e083";
+	
 }
 
 .glyphicon-ok-sign:before {
 	content: "\e084";
 }
+
 
 .glyphicon-question-sign:before {
 	content: "\e085";

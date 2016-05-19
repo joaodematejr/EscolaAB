@@ -54,13 +54,13 @@
 					<h:column>
 						<f:facet name="header">Açoes</f:facet>
 						<h:link styleClass="btn btn-default" outcome="/clientes"
-							value="Editar">
+							value="Editar" onclick="redirecionar();"> 
 							<f:param name="id" value="#{user.id}" />
 						</h:link>
 						<h:commandLink
-							onclick="return confirm('Tem certeza da exclusão um cliente #{user.nome}');"
-							styleClass="btn btn-danger"
-							action="#{clienteMb.excluir(user.id)}" value="Excluir" />
+							onclick=" return confirm('Tem certeza da exclusão um cliente #{user.nome}');"
+							styleClass="btn btn-danger"   
+							action="#{clienteMb.excluir(user.id)}" value="Excluir"  />
 					</h:column>
 				</h:dataTable>
 			</h:form>
