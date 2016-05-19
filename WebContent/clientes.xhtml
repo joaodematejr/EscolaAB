@@ -19,20 +19,16 @@ function redirecionar(){
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title><ui:insert name="title">Cadastro</ui:insert></title>
+
 	
-	<h:outputStylesheet name="/libs/bootstrap/css/bootstrap.css" />
-	<h:outputStylesheet name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.css" />
-	<h:outputStylesheet name="/libs/bootstrap/template/offcanvas.css" />
-	
-	<h:outputScript name="/libs/jquery.min.js" />
-	
+
 </h:head>
 
 <h:body>
-<f:metadata>
-	<f:viewParam name="id" value="#{clienteMb.editarId}" />
-	<f:event listener="#{clienteMb.carregarEdicao}" type="preRenderView" />
-</f:metadata>
+	<f:metadata>
+		<f:viewParam name="id" value="#{clienteMb.editarId}" />
+		<f:event listener="#{clienteMb.carregarEdicao}" type="preRenderView" />
+	</f:metadata>
 	<div class="container">
 		<div class="header clearfix">
 			<nav>
@@ -90,16 +86,16 @@ function redirecionar(){
 								value="#{clienteMb.cliente.nascimento}">
 								<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
 							</h:inputText>
-							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-							</span>
+							<span class="input-group-addon"><span
+								class="glyphicon glyphicon-calendar"></span> </span>
 						</div>
 					</div>
-					
-					
-					
-					
-					
-				
+
+
+
+
+
+
 					<div class="form-group">
 						<label for="exampleInputPerfil">Sexo</label> <label
 							for="exampleInputPerfil">Sexo</label>
@@ -171,7 +167,7 @@ function redirecionar(){
 							<div class="form-group">
 								<label for="exampleInputComplemento">Senha</label>
 								<h:inputSecret redisplay="true" styleClass="form-control"
-									value="#{clienteMb.cliente.senha}" id="exampleInputSenha"/>
+									value="#{clienteMb.cliente.senha}" id="exampleInputSenha" />
 							</div>
 							<button type="reset" class="btn btn-danger">Limpar</button>
 							<h:commandButton styleClass="btn btn-success"  onclick="redirecionar();"
@@ -198,8 +194,15 @@ function redirecionar(){
 	<h:outputScript name="/libs/moment-with-locales.js" />
 	<h:outputScript name="/js/menu.js" />
 	<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
-	<h:outputScript name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+	<h:outputScript
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
 	<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
-	
+	<h:outputStylesheet name="/libs/bootstrap/css/bootstrap.css" />
+	<h:outputStylesheet
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.css" />
+	<h:outputStylesheet name="/libs/bootstrap/template/offcanvas.css" />
+
+	<h:outputScript name="/libs/jquery.min.js" />
+
 </h:body>
 </html>

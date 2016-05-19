@@ -12,14 +12,16 @@ import rn.ClienteRN;
 public class ClienteConversos implements Converter {
 
 	@Override
-	public Object getAsObject(FacesContext facesContext, UIComponent uiComponent, String value) {
+	public Object getAsObject(FacesContext facesContext,
+			UIComponent uiComponent, String value) {
 		ClienteRN clienteRN = new ClienteRN();
 		Long id = Long.parseLong(value);
 		return clienteRN.buscarPorId(id);
 	}
 
 	@Override
-	public String getAsString(FacesContext facesContext, UIComponent uiComponent, Object value) {
+	public String getAsString(FacesContext facesContext,
+			UIComponent uiComponent, Object value) {
 		Cliente cliente = (Cliente) value;
 		return cliente.getId().toString();
 	}
