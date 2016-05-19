@@ -78,7 +78,7 @@ public class ClienteMb {
 		Long idExcluir = Long.parseLong(id);
 		clienteRN.excluir(idExcluir);
 		listaClientes = null;
-		return "";
+		return "index.html";
 	}
 
 	public String salvar() {
@@ -88,7 +88,9 @@ public class ClienteMb {
 	}
 
 	public void carregarEdicao() {
-		if (editarId != null && !FacesContext.getCurrentInstance().getPartialViewContext().isAjaxRequest()) {
+		if (editarId != null
+				&& !FacesContext.getCurrentInstance().getPartialViewContext()
+						.isAjaxRequest()) {
 			cliente = clienteRN.buscarPorId(editarId);
 		}
 

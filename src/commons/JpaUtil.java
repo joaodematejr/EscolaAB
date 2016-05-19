@@ -1,6 +1,6 @@
 package commons;
 
-import javax.faces.component.FacesComponent;
+import javax.faces.component.FacesComponent;//ACESSA FACES COMPONENT
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
