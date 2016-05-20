@@ -11,8 +11,8 @@
 	<title><ui:insert name="title">Cadastro</ui:insert></title>
 	<h:outputStylesheet name="/css/bootstrap.css" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
-	
-		<script type="text/javascript">
+
+	<script type="text/javascript">
 function redirecionar(){
 	alert("Salvo com Sucesso!");
 
@@ -57,8 +57,8 @@ function redirecionar(){
 						for="exampleInputPerfil">Perfil</label>
 					<h:selectOneMenu styleClass="form-control"
 						value="#{clienteMb.cliente.perfil}">
-						<f:selectItem itemLabel="-" itemValue="" />
-						<f:selectItem itemLabel="Aluno" itemValue="ALUNO" />
+						<f:selectItem  itemLabel="Aluno" itemValue="ALUNO"
+							/>
 					</h:selectOneMenu>
 				</div>
 				<div class="form-group">
@@ -103,8 +103,9 @@ function redirecionar(){
 
 
 				<button type="reset" class="btn btn-danger">Limpar</button>
-				<h:commandButton styleClass="btn btn-success" onclick="redirecionar();"
-					action="#{clienteMb.salvar}" value="Salvar" />
+				<h:commandButton styleClass="btn btn-success"
+					onclick="redirecionar();" action="#{clienteMb.salvar}"
+					value="Salvar" />
 			</h:form>
 		</div>
 	</div>

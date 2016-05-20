@@ -62,23 +62,30 @@
 						</div>
 					</h:panelGroup>
 					<h:inputHidden value="#clienteMB.cliente.id}" />
-					<div class="form-group">
-						<label for="exampleInputPerfil">Clientes</label> <label
-							for="exampleInputPerfil">Perfil</label>
-						<h:selectOneMenu styleClass="form-control"
-							value="#{clienteMb.cliente.perfil}">
-							<f:selectItem itemLabel="-" itemValue="" />
-							<f:selectItem itemLabel="Administrador" itemValue="ADMIN" />
-							<f:selectItem itemLabel="Aluno" itemValue="ALUNO" />
-							<f:selectItem itemLabel="Professor" itemValue="PROFESSOR" />
-							<f:selectItem itemLabel="Diretor" itemValue="DIRETOR" />
-						</h:selectOneMenu>
-					</div>
-					<div class="form-group">
-						<label for="exampleInputNome">Nome Completo</label>
-						<h:inputText styleClass="form-control"
-							value="#{clienteMb.cliente.nome}" id="exampleInputNome" />
-					</div>
+					
+					
+					<!-- <div class="row">  -->
+						<div class="form-group">
+							<label for="exampleInputPerfil">Clientes</label> <label
+								for="exampleInputPerfil">Perfil</label>
+							<h:selectOneMenu styleClass="form-control"
+								value="#{clienteMb.cliente.perfil}">
+								<f:selectItem itemLabel="-" itemValue="" />
+								<f:selectItem itemLabel="Administrador" itemValue="ADMIN" />
+								<f:selectItem itemLabel="Aluno" itemValue="ALUNO" />
+								<f:selectItem itemLabel="Professor" itemValue="PROFESSOR" />
+								<f:selectItem itemLabel="Diretor" itemValue="DIRETOR" />
+							</h:selectOneMenu>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputNome">Nome Completo</label>
+							<h:inputText styleClass="form-control"
+								value="#{clienteMb.cliente.nome}" id="exampleInputNome" />
+						</div>
+					<!-- </div> -->
+					
+					
+					
 					<div class="form-group">
 						<label for="exampleInputNome">CPF</label>
 						<h:inputText styleClass="form-control"
@@ -137,7 +144,7 @@
 				<div>
 
 					<div class="col-md-4">
-						<div class="page-header">
+						<div>
 							<div class="form-group">
 								<label for="exampleInputNumero">Numero</label>
 								<h:inputText styleClass="form-control"
