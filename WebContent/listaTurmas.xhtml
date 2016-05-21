@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title><ui:insert name="title">Cadastro</ui:insert></title>
+	<h:outputStylesheet name="/css/bootstrap.css" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+</h:head>
+
+<h:body>
+	<div class="container">
+		<div class="header clearfix">
+			<nav>
+			<ul class="nav nav-pills pull-right">
+				<li role="presentation" class="active"><a href="index.html">Home</a></li>
+				<li role="presentation" class="active"><a href="Turmas.xhtml">Cadastrar Turma</a></li>
+				<li role="presentation"><a href="listaTurmas.xhtml">Listar todas
+						 as turmas</a></li>
+				
+			</ul>
+			</nav>
+			<h3 class="text-muted">Escola Aprenda brincando</h3>
+		</div>
+		<div class="page-header">
+			<h1>
+				Turmas <small>Cadastradas</small>
+			</h1>
+		</div>
+
+		<div class="col-md-9 col-md-9">
+			<h:form>
+				<h:dataTable value="#{turmaMb.listaTurmas}" var="user"
+					styleClass="table table table-hover">
+					<f:facet name="header">Listagem</f:facet>
+					<h:column>
+						<f:facet name="header">ID</f:facet>
+						<h:outputText value="#{user.id}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Nome</f:facet>
+						<h:outputText value="#{user.nome}" />
+					</h:column>
+				
+					<h:column>
+						<f:facet name="header">Açoes</f:facet>
+						<h:link styleClass="btn btn-default" outcome="/Turmas"
+							value="Editar" onclick="redirecionar();"> 
+							<f:param name="id" value="#{user.id}" />
+						</h:link>
+						<h:commandLink
+							onclick=" return confirm('Tem certeza da exclusão da turma#{user.nome}');"
+							styleClass="btn btn-danger"   
+							action="#{turmaMb.excluir(user.id)}" value="Excluir"  />
+					</h:column>
+				</h:dataTable>
+			</h:form>
+		</div>
+	</div>
+	<!--/.container-->
+
+	<h:outputScript name="/jquery.min.js" />
+	<h:outputScript name="/menu.js" />
+	<h:outputScript name="/bootstrap/js/bootstrap.js" />
+	<h:outputScript name="/bootstrap/template/offcanvas.js" />
+</h:body>
+</html>

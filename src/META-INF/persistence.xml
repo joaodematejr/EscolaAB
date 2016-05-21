@@ -9,6 +9,7 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
 		<class>entity.Cliente</class>
+		<class>entity.Turma</class>
 
 		<properties>
 			<!-- dados da conexao -->
