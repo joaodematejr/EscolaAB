@@ -1,0 +1,22 @@
+img.acende {
+	opacity: 0.3; 
+	-moz-opacity: 0.5;
+	Filter: Alpha(Opacity=90)
+	display: block;
+	max-width: 100%;
+	height: auto;
+	display: block;
+	max-width: 100%;
+	height: auto;
+
+
+}
+
+
+img.acende:hover {
+	opacity: 9.0; 
+	-moz-opacity: 2.0;
+	Filter: Alpha(Opacity=100)
+	display: block;
+	max-width: 100%;
+	height: auto;
