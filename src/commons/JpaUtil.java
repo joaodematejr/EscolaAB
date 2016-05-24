@@ -1,3 +1,4 @@
+//joao_edemar <joao_edemar@estudante.sc.senai.br>//
 package commons;
 
 import javax.faces.component.FacesComponent;//ACESSA FACES COMPONENT
