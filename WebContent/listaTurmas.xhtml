@@ -16,54 +16,51 @@
 </h:head>
 
 <h:body>
-	<div class="container">
-		<div class="header clearfix">
-			<nav>
-			<ul class="nav nav-pills pull-right">
-				<li role="presentation" class="active"><a href="index.html">Home</a></li>
-				<li role="presentation" class="active"><a href="Turmas.xhtml">Cadastrar Turma</a></li>
-				<li role="presentation"><a href="listaTurmas.xhtml">Listar todas
-						 as turmas</a></li>
-				
-			</ul>
-			</nav>
-			<h3 class="text-muted">Escola Aprenda brincando</h3>
-		</div>
+	<ui:define name="conteudo">
 		<div class="page-header">
-			<h1>
-				Turmas <small>Cadastradas</small>
-			</h1>
-		</div>
-
-		<div class="col-md-9 col-md-9">
+			<h1>Turmas</h1>
+			<h:link outcome="/Turma" styleClass="btn btn-success">
+				<span class="glyphicon glyphicon-plus"></span>
+			</h:link>
+			<h:messages />
 			<h:form>
-				<h:dataTable value="#{turmaMb.listaTurmas}" var="user"
-					styleClass="table table table-hover">
-					<f:facet name="header">Listagem</f:facet>
+				<h:dataTable styleClass="table" value="#{TurmaMb.listaTurma}"
+					var="Turma">
 					<h:column>
 						<f:facet name="header">ID</f:facet>
-						<h:outputText value="#{user.id}" />
+						<h:outputText value="#{Turma.id}" />
 					</h:column>
 					<h:column>
-						<f:facet name="header">Nome</f:facet>
-						<h:outputText value="#{user.nome}" />
+						<f:facet name="header">Inicio</f:facet>
+						<h:outputText value="#{Turma.inicio}">
+							<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+						</h:outputText>
 					</h:column>
-				
 					<h:column>
-						<f:facet name="header">Açoes</f:facet>
-						<h:link styleClass="btn btn-default" outcome="/Turmas"
-							value="Editar" onclick="redirecionar();"> 
-							<f:param name="id" value="#{user.id}" />
-						</h:link>
-						<h:commandLink
-							onclick=" return confirm('Tem certeza da exclusão da turma#{user.nome}');"
-							styleClass="btn btn-danger"   
-							action="#{turmaMb.excluir(user.id)}" value="Excluir"  />
+						<f:facet name="header">Fim</f:facet>
+						<h:outputText value="#{Turma.termino}">
+							<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Professor</f:facet>
+						<h:outputText value="#{Turma.Professor.nome}" />
+					</h:column>
+					<h:column>
+						<span> <h:link styleClass="btn btn-default"
+								outcome="/Turma" value="Editar">
+								<f:param name="id" value="#{Turma.id}" />
+							</h:link>
+						</span>
+						<span> <h:commandLink styleClass="btn btn-warning"
+								action="#{TurmaMb.excluir(Turma.id)}" value="Excluir"
+								onclick="return confirm('Tem certeza da exclusão da Turma para #{Turma.destino}')" />
+						</span>
 					</h:column>
 				</h:dataTable>
 			</h:form>
 		</div>
-	</div>
+	</ui:define>
 	<!--/.container-->
 
 	<h:outputScript name="/jquery.min.js" />

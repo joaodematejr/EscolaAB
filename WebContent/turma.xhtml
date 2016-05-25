@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:outputScript name="/libs/jquery.min.js" />
+<h:outputScript name="/libs/moment-with-locales.js" />
+<h:outputScript name="/js/menu.js" />
+<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
+<h:outputScript
+	name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
+
+<script type="text/javascript">
+	function redirecionar() {
+		alert("Salvo com Sucesso!");
+
+	}
+</script>
+
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title><ui:insert name="title">Cadastro</ui:insert></title>
+
+
+
+</h:head>
+
+<h:body>
+	<ui:define name="conteudo">
+		<h1>
+			Nova Turma
+		</h1>
+		<h:messages />
+		<h:form>
+			<h:panelGroup rendered="#{not empty TurmaMb.Turma.id}">
+				<div class="form-group id">
+					<label>ID</label>
+					<h:inputText styleClass="form-control" readonly="true"
+						value="#{TurmaMb.Turma.id}" />
+				</div>
+			</h:panelGroup>
+			<h:inputHidden value="#{TurmaMb.Turma.id}" />
+
+			<div class="form-group">
+				<label>Professor</label>
+				<h:selectOneMenu styleClass="form-control"
+					value="#{TurmaMb.Turma.Professor}">
+					<f:selectItem itemLabel="-" />
+					<f:selectItems value="#{ClienteMb.listaProfessores}" var="Professor"
+						itemLabel="#{Professor.nome}" itemValue="#{Professor}" />
+				</h:selectOneMenu>
+			</div>
+			<fieldset>
+				<legend>Alunos</legend>
+				<div class="row">
+					<div class="col-sm-9">
+						<h:selectOneMenu id="uiSelecionaCliente" styleClass="form-control"
+							value="#{TurmaMb.clienteSelecionado}">
+							<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+							<f:selectItems value="#{ClienteMb.listaClientes}" var="cli"
+								itemLabel="#{cli.nome}" itemValue="#{cli}" />
+						</h:selectOneMenu>
+					</div>
+					<div class="col-sm-3">
+						<h:commandLink styleClass="btn btn-success">
+							<f:ajax event="click" execute="uiSelecionaCliente"
+								listener="#{TurmaMb.adicionarCliente}"
+								render="uiClientesTurma uiSelecionaCliente" />
+							<span class="glyphicon glyphicon-plus"></span>
+						</h:commandLink>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<h:dataTable styleClass="table-condensed table-hover"
+							id="uiClientesTurma" value="#{TurmaMb.Turma.clientesTurma}"
+							var="cliente">
+							<h:column>
+								<f:facet name="header">Nome</f:facet>
+								<h:outputText value="#{cliente.nome}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">controle</f:facet>
+								<h:commandLink>
+									<f:attribute name="idCliente" value="#{cliente}" />
+									<f:ajax event="click" execute="@form" render="@form"
+									listener="#{TurmaMb.excluirCliente}"/>
+									<span class="glyphicon glyphicon-remove-circle"></span>
+								</h:commandLink> 
+							</h:column>
+						</h:dataTable>
+					</div>
+				</div>
+			</fieldset>
+
+			<div class="form-group">
+				<label>Inicio das aulas</label>
+				<div class='input-group date datetimepicker'>
+					<h:inputText styleClass="form-control"
+						value="#{TurmaMb.Turma.inicio}">
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+					</h:inputText>
+					<span class="input-group-addon"> <span
+						class="glyphicon glyphicon-calendar"></span>
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Termino das aulas</label>
+				<div class='input-group date datetimepicker'>
+					<h:inputText styleClass="form-control"
+						value="#{TurmaMb.Turma.termino}">
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+					</h:inputText>
+					<span class="input-group-addon"> <span
+						class="glyphicon glyphicon-calendar"></span>
+					</span>
+				</div>
+			</div>
+			
+			<button class="btn btn-default">Restaurar</button>
+			<h:commandButton action="#{TurmaMb.salvar}" value="Salvar"
+				styleClass="btn btn-primary" />
+		</h:form>
+		<h:outputScript name="/js/datepicker-component.js" />
+	</ui:define>
+
+
+	<!--/.container-->
+	<h:outputScript name="/js/datepicker-component.js" />
+	<h:outputScript name="/libs/moment-with-locales.js" />
+	<h:outputScript name="/js/menu.js" />
+	<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
+	<h:outputScript
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+	<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
+	<h:outputStylesheet name="/libs/bootstrap/css/bootstrap.css" />
+	<h:outputStylesheet
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.css" />
+	<h:outputStylesheet name="/libs/bootstrap/template/offcanvas.css" />
+
+	<h:outputScript name="/libs/jquery.min.js" />
+	<h:outputScript name="/libs/moment-with-locales.js" />
+	<h:outputScript name="/js/menu.js" />
+	<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
+	<h:outputScript
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+	<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
+
+</h:body>
+</html>

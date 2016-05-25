@@ -1,5 +1,6 @@
 package mb;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -12,37 +13,71 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.event.ComponentSystemEvent;
 
+
 import rn.TurmaRN;
+import entity.Cliente;
 import entity.Turma;
 
 
 @ViewScoped
 @ManagedBean
 public class TurmaMb {
-	private Turma turma;
-	private TurmaRN turmaRN;
+	private List<Turma> ListarTurma;
+	private TurmaRN TurmaRN;
+	private Turma Turma;
+
 	private Long editarId;
-	private List<Turma> listaTurmas;
+
+	private Cliente clienteSelecionado;
+
 	@PostConstruct
-	public void depoisDeConstruir() {
-		turma = new Turma();
-		turmaRN = new TurmaRN();
+	public void init() {
+		TurmaRN = new TurmaRN();
+		Turma = new Turma();
+		Turma.setClientesTurma(new ArrayList<Cliente>());
 	}
 
-	public Turma getTurma() {
-		return turma;
+	public List<Turma> getListaTurma() {
+		if (ListarTurma == null) {
+			ListarTurma = TurmaRN.listar();
+		}
+		return ListarTurma;
 	}
 
-	public void setTurma(Turma turma) {
-		this.turma = turma;
+	public void setListaTurma(List<Turma> listaTurma) {
+		this.ListarTurma = listaTurma;
+	}
+
+	public Turma getEscursao() {
+		return Turma;
+	}
+
+	public List<Turma> getListarTurma() {
+		return ListarTurma;
+	}
+
+	public void setListarTurma(List<Turma> listarTurma) {
+		ListarTurma = listarTurma;
 	}
 
 	public TurmaRN getTurmaRN() {
-		return turmaRN;
+		return TurmaRN;
 	}
 
 	public void setTurmaRN(TurmaRN turmaRN) {
-		this.turmaRN = turmaRN;
+		TurmaRN = turmaRN;
+	}
+
+	public Turma getTurma() {
+		return Turma;
+	}
+
+	public void setTurma(Turma turma) {
+		Turma = turma;
+	}
+
+	public void setClienteSelecionado(Cliente clienteSelecionado) {
+		this.clienteSelecionado = clienteSelecionado;
 	}
 
 	public Long getEditarId() {
@@ -53,45 +88,59 @@ public class TurmaMb {
 		this.editarId = editarId;
 	}
 
-	public List<Turma> getListaTurmas() {
-		if (listaTurmas == null) {
-			listaTurmas = turmaRN.listarTurmas();
+	public void carregarEdicao() {
+		if (editarId != null &&  
+				!FacesContext.getCurrentInstance()
+				.getPartialViewContext().isAjaxRequest()) {
+			Turma = TurmaRN.buscarPorId(editarId);
 		}
-		return listaTurmas;
 	}
 
-	public void setListaTurma(List<Turma> listaTurmas) {
-		this.listaTurmas = listaTurmas;
-	}
-
-	public void carregarUsuario(ComponentSystemEvent event) {
-		if (editarId == null) {
+	public void adicionarCliente(AjaxBehaviorEvent event) {
+		if(Turma.getClienteTurma().contains(clienteSelecionado)){
 			return;
 		}
-
-		turma = turmaRN.buscarPorId(editarId);
+	//	Turma.getClienteTurma().add(clienteSelecionado);
+		clienteSelecionado = null;
 	}
 
-	public String excluir(String id) {
-		Long idExcluir = Long.parseLong(id);
-		turmaRN.excluir(idExcluir);
-		listaTurmas = null;
-		return "index.html";
+	public void excluirCliente(AjaxBehaviorEvent event) {
+		Cliente cliente = (Cliente) event.getComponent().getAttributes()
+				.get("idCliente");
+		Turma.getClienteTurma().remove(cliente);
+	}
+	
+	public String excluir(String idParam){
+		Long id = Long.parseLong(idParam);
+		TurmaRN.excluir(id);
+		ListarTurma = null;
+		
+		return "";
 	}
 
-	public String salvar() {
-		turmaRN.salvar(turma);
-		listaTurmas = null;
-		return "index.html";
-	}
-
-	public void carregarEdicao() {
-		if (editarId != null
-				&& !FacesContext.getCurrentInstance().getPartialViewContext()
-						.isAjaxRequest()) {
-			turma = turmaRN.buscarPorId(editarId);
+	public String salvar() throws Throwable {
+		try {
+			TurmaRN.salvar(Turma);
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Salvo",
+							"Salvo com sucesso."));
+			return "/Turmas";
+		} catch (IllegalArgumentException exception) {
+			exception.printStackTrace();
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro",
+							exception.getMessage()));
+		} catch (Exception e) {
+			e.printStackTrace();
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", e
+							.getMessage()));
 		}
-
+		return "";
 	}
+
 
 }

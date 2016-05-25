@@ -1,13 +1,16 @@
 package entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import entity.Turma;
 
 @Entity
@@ -18,8 +21,40 @@ public class Turma {
 	@Enumerated(EnumType.STRING)
 	private Perfil perfil;
 	private String nome;
-	private Date termino;
 	private Date inicio;
+	private Date termino;
+	@ManyToOne
+	private Cliente Professor;
+	@ManyToMany
+	private List<Cliente> clienteTurma;
+
+
+
+
+	public Cliente getProfessor() {
+		return Professor;
+	}
+
+
+
+
+
+
+	public void setProfessor(Cliente Professor) {
+		this.Professor = Professor;
+	}
+
+
+
+
+
+
+	public void setClienteTurma(List<Cliente> clienteTurma) {
+		this.clienteTurma = clienteTurma;
+	}
+
+
+
 
 
 
@@ -77,7 +112,7 @@ public class Turma {
 
 
 	public Date getInicio() {
-		return inicio;
+		return getInicio();
 	}
 
 
@@ -127,6 +162,26 @@ public class Turma {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+
+
+
+
+
+	public void setClientesTurma(ArrayList<Cliente> arrayList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+
+
+	public List<entity.Turma> getClienteTurma() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
