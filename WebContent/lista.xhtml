@@ -21,9 +21,8 @@
 			<nav>
 			<ul class="nav nav-pills pull-right">
 				<li role="presentation" class="active"><a href="index.html">Home</a></li>
-				<li role="presentation"><a href="lista.xhtml">Listar todos
-						os clientes</a></li>
-				<li role="presentation"><a href="clientes.xhtml">Administrador</a></li>
+				<li role="presentation"><a href="admListagem.xhtml">Administrador</a></li>
+
 			</ul>
 			</nav>
 			<h3 class="text-muted">Escola Aprenda brincando</h3>
@@ -54,13 +53,13 @@
 					<h:column>
 						<f:facet name="header">Açoes</f:facet>
 						<h:link styleClass="btn btn-default" outcome="/clientes"
-							value="Editar" onclick="redirecionar();"> 
+							value="Editar" onclick="redirecionar();">
 							<f:param name="id" value="#{user.id}" />
 						</h:link>
 						<h:commandLink
 							onclick=" return confirm('Tem certeza da exclusão um cliente #{user.nome}');"
-							styleClass="btn btn-danger"   
-							action="#{clienteMb.excluir(user.id)}" value="Excluir"  />
+							styleClass="btn btn-danger"
+							action="#{clienteMb.excluir(user.id)}" value="Excluir" />
 					</h:column>
 				</h:dataTable>
 			</h:form>

@@ -31,9 +31,7 @@
 
 <h:body>
 	<ui:define name="conteudo">
-		<h1>
-			Nova Turma
-		</h1>
+		<h1>Nova Turma</h1>
 		<h:messages />
 		<h:form>
 			<h:panelGroup rendered="#{not empty TurmaMb.Turma.id}">
@@ -50,8 +48,9 @@
 				<h:selectOneMenu styleClass="form-control"
 					value="#{TurmaMb.Turma.Professor}">
 					<f:selectItem itemLabel="-" />
-					<f:selectItems value="#{ClienteMb.listaProfessores}" var="Professor"
-						itemLabel="#{Professor.nome}" itemValue="#{Professor}" />
+					<f:selectItems value="#{ClienteMb.listaProfessores}"
+						var="Professor" itemLabel="#{Professor.nome}"
+						itemValue="#{Professor}" />
 				</h:selectOneMenu>
 			</div>
 			<fieldset>
@@ -88,9 +87,9 @@
 								<h:commandLink>
 									<f:attribute name="idCliente" value="#{cliente}" />
 									<f:ajax event="click" execute="@form" render="@form"
-									listener="#{TurmaMb.excluirCliente}"/>
+										listener="#{TurmaMb.excluirCliente}" />
 									<span class="glyphicon glyphicon-remove-circle"></span>
-								</h:commandLink> 
+								</h:commandLink>
 							</h:column>
 						</h:dataTable>
 					</div>
@@ -121,7 +120,7 @@
 					</span>
 				</div>
 			</div>
-			
+
 			<button class="btn btn-default">Restaurar</button>
 			<h:commandButton action="#{TurmaMb.salvar}" value="Salvar"
 				styleClass="btn btn-primary" />
