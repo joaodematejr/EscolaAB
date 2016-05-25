@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:outputScript name="/libs/jquery.min.js" />
+<h:outputScript name="/libs/moment-with-locales.js" />
+<h:outputScript name="/js/menu.js" />
+<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
+<h:outputScript
+	name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
+
+<script type="text/javascript">
+	function redirecionar() {
+		alert("Questão Salvo com Sucesso!");
+
+	}
+</script>
+
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title><ui:insert name="title">Cadastro de questoes </ui:insert></title>
+
+
+
+</h:head>
+
+<h:body>
+	<f:metadata>
+		<f:viewParam name="id" value="#{clienteMb.editarId}" />
+		<f:event listener="#{clienteMb.carregarEdicao}" type="preRenderView" />
+	</f:metadata>
+	<div class="container">
+		<div class="header clearfix">
+			<nav>
+			<ul class="nav nav-pills pull-right">
+				<li role="presentation" class="active"><a href="index.html">Home</a></li>
+				<li role="presentation"><a href="admListagem.xhtml">Administrador</a></li>
+
+			</ul>
+			</nav>
+			<h3 class="text-muted">Escola Aprenda brincando</h3>
+		</div>
+		<div class="page-header">
+			<h1>
+				Bem Vindo <small>Professor</small>
+			</h1>
+		</div>
+		<h:form>
+			<div>
+				<div class="col-md-4 ">
+					<h:panelGroup rendered="#{not empty questaoMb.questao.id}">
+						<div class="form-group id">
+							<label for="exampleId">ID</label>
+							<h:inputText styleClass="form-control" readonly="true"
+								value="#{questaoMb.questao.id}" id="exampleId" />
+						</div>
+					</h:panelGroup>
+					<h:inputHidden value="#questaoMB.questao.id}" />
+
+					<div class="form-group">
+						<label>Professor</label>
+						<h:selectOneMenu styleClass="form-control"
+							value="#{escursaoMb.escursao.agente}">
+							<f:selectItem itemLabel="-" />
+							<f:selectItems value="#{usuarioMb.listaAgentes}" var="agente"
+								itemLabel="#{agente.nome}" itemValue="#{agente}" />
+						</h:selectOneMenu>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPerfil">Dificudade</label> <label
+							for="exampleInputPerfil">Questao</label>
+						<h:selectOneMenu styleClass="form-control"
+							value="#{clienteMb.cliente.perfil}">
+							<f:selectItem itemLabel="-" itemValue="" />
+							<f:selectItem itemLabel="Muito Fácil" itemValue="ADMIN" />
+							<f:selectItem itemLabel="Fácil" itemValue="ALUNO" />
+							<f:selectItem itemLabel="Médio" itemValue="PROFESSOR" />
+							<f:selectItem itemLabel="Difícil" itemValue="DIRETOR" />
+							<f:selectItem itemLabel="Muito Difícil" itemValue="DIRETOR" />
+						</h:selectOneMenu>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPerfil">Modalidade</label> <label
+							for="exampleInputPerfil">Questao</label>
+						<h:selectOneMenu styleClass="form-control"
+							value="#{clienteMb.cliente.perfil}">
+							<f:selectItem itemLabel="-" itemValue="" />
+							<f:selectItem itemLabel="Certo ou Errado" itemValue="ADMIN" />
+							<f:selectItem itemLabel="Múltipla-Escola" itemValue="ALUNO" />
+						</h:selectOneMenu>
+					</div>
+					<div class="form-group">
+						<label>Data da pergunta</label>
+						<div class='input-group date datetimepicker'>
+							<h:inputText styleClass="form-control"
+								value="#{clienteMb.cliente.nascimento}">
+								<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+							</h:inputText>
+							<span class="input-group-addon"><span
+								class="glyphicon glyphicon-calendar"></span> </span>
+						</div>
+					</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				</div>
+				<div>
+
+					<div class="col-md-4">
+						<div>
+							<div class="form-group">
+								<label for="exampleInputNumero">Assunto</label>
+								<h:inputText styleClass="form-control"
+									value="#{clienteMb.cliente.numero}" id="exampleInputNumero" />
+							</div>
+							<div class="form-group">
+								<label for="exampleInputComplemento">Pergunta</label>
+								<h:inputText styleClass="form-control"
+									value="#{clienteMb.cliente.complemento}"
+									id="exampleInputComplemento" />
+							</div>
+							<div class="form-group">
+								<label for="exampleInputComplemento">Resposta</label>
+								<h:inputText styleClass="form-control"
+									value="#{clienteMb.cliente.bairro}" id="exampleInputBairro" />
+							</div>
+							<div class="form-group">
+								<label for="exampleInputComplemento">Comentario</label>
+								<h:inputText styleClass="form-control"
+									value="#{clienteMb.cliente.cidade}" id="exampleInputCidade" />
+							</div>
+
+							<button type="reset" class="btn btn-danger">Limpar</button>
+							<h:commandButton styleClass="btn btn-success"
+								onclick="redirecionar();" action="#{clienteMb.salvar}"
+								value="Salvar" />
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+
+		</h:form>
+
+
+	</div>
+
+
+
+
+
+
+	<!--/.container-->
+	<h:outputScript name="/js/datepicker-component.js" />
+	<h:outputScript name="/libs/moment-with-locales.js" />
+	<h:outputScript name="/js/menu.js" />
+	<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
+	<h:outputScript
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+	<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
+	<h:outputStylesheet name="/libs/bootstrap/css/bootstrap.css" />
+	<h:outputStylesheet
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.css" />
+	<h:outputStylesheet name="/libs/bootstrap/template/offcanvas.css" />
+
+	<h:outputScript name="/libs/jquery.min.js" />
+	<h:outputScript name="/libs/moment-with-locales.js" />
+	<h:outputScript name="/js/menu.js" />
+	<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
+	<h:outputScript
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+	<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
+
+</h:body>
+</html>
