@@ -22,7 +22,7 @@
 
 <h:body>
 	<div class="container">
-	<div class="header clearfix">
+		<div class="header clearfix">
 			<nav>
 			<ul class="nav nav-pills pull-right">
 				<li role="presentation" class="active"><a href="index.html">Home</a></li>
@@ -52,10 +52,12 @@
 				<div class="form-group">
 					<label for="exampleInputPerfil">Clientes</label> <label
 						for="exampleInputPerfil">Perfil</label>
+
 					<h:selectOneMenu styleClass="form-control"
 						value="#{clienteMb.cliente.perfil}">
 						<f:selectItem itemLabel="Aluno" itemValue="ALUNO" />
 					</h:selectOneMenu>
+
 				</div>
 				<div class="form-group">
 					<label for="exampleInputNome">Nome Completo</label>
