@@ -4,31 +4,28 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
-<h:outputScript name="/libs/jquery.min.js" />
-<h:outputScript name="/libs/moment-with-locales.js" />
-<h:outputScript name="/js/menu.js" />
-<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
-<h:outputScript
-	name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
-<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
-
-<script type="text/javascript">
-	function redirecionar() {
-		alert("Documento Salvo com Sucesso!");
-
-	}
-</script>
-
 <h:head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title><ui:insert name="title">Cadastro de Documentos </ui:insert></title>
+	<title><ui:insert name="title">Cadastro de documentos</ui:insert></title>
+	<h:outputStylesheet name="/css/bootstrap.css" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<h:outputScript name="/libs/jquery.min.js" />
+	<h:outputScript name="/libs/moment-with-locales.js" />
+	<h:outputScript name="/js/menu.js" />
+	<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
+	<h:outputScript
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+	<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
 
+	<script type="text/javascript">
+		function redirecionar() {
+			alert("Documento Salvo com Sucesso!");
 
-
+		}
+	</script>
 </h:head>
-
 <h:body>
 	<f:metadata>
 		<f:viewParam name="id" value="#{clienteMb.editarId}" />
@@ -45,103 +42,95 @@
 			</nav>
 			<h3 class="text-muted">Escola Aprenda brincando</h3>
 		</div>
-		<div class="page-header">
+		<div class="col-md-3 col-md-offset-0">
 			<h1>
-				Bem Vindo <small>Professor</small>
+				Bem vindo <small> Professor </small>
 			</h1>
 		</div>
-		<h:form>
-			<div>
-				<div class="col-md-4 ">
-					<h:panelGroup rendered="#{not empty questaoMb.questao.id}">
-						<div class="form-group id">
-							<label for="exampleId">ID</label>
-							<h:inputText styleClass="form-control" readonly="true"
-								value="#{questaoMb.questao.id}" id="exampleId" />
-						</div>
-					</h:panelGroup>
-					<h:inputHidden value="#questaoMB.questao.id}" />
 
-					<div class="form-group">
-				<label>Professor</label>
-				<h:selectOneMenu styleClass="form-control"
-					value="#{escursaoMb.escursao.agente}">
-					<f:selectItem itemLabel="-" />
-					<f:selectItems value="#{usuarioMb.listaAgentes}" var="agente"
-						itemLabel="#{agente.nome}" itemValue="#{agente}" />
-				</h:selectOneMenu>
-			</div>
-					<div class="form-group">
-						<label>Data do cadastro</label>
-						<div class='input-group date datetimepicker'>
-							<h:inputText styleClass="form-control"
-								value="#{clienteMb.cliente.nascimento}">
-								<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
-							</h:inputText>
-							<span class="input-group-addon"><span
-								class="glyphicon glyphicon-calendar"></span> </span>
-						</div>
+		<div class="col-md-1"></div>
+
+		<div class="col-md-4">
+			<h:form>
+
+				<h:panelGroup rendered="#{not empty documentoMb.documento.id}">
+					<div class="form-group id">
+						<label>ID</label>
+						<h:inputText styleClass="form-control" readonly="true"
+							value="#{documentoMb.documento.id}" />
 					</div>
-					<div class="form-group">
-						<label>Data para entrega</label>
-						<div class='input-group date datetimepicker'>
-							<h:inputText styleClass="form-control"
-								value="#{clienteMb.cliente.nascimento}">
-								<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
-							</h:inputText>
-							<span class="input-group-addon"><span
-								class="glyphicon glyphicon-calendar"></span> </span>
-						</div>
+				</h:panelGroup>
+				<h:inputHidden value="#{documentoMb.documento.id}" />
+				<div class="form-group">
+					<label>Perfil Professor</label>
+					<h:selectOneMenu styleClass="form-control"
+						value="#{documentoMb.documento.professor}">
+						<f:selectItem itemLabel="-" />
+						<f:selectItems value="#{clienteMb.listaClientes}" var="cliente"
+							itemLabel="#{cliente.nome}" itemValue="#{cliente}" />
+					</h:selectOneMenu>
+				</div>
+				<div class="form-group">
+					<label>Data da postagem</label>
+					<div class='input-group date datetimepicker'>
+						<h:inputText styleClass="form-control"
+							value="#{documentoMb.documento.cadastro}">
+							<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+						</h:inputText>
+						<span class="input-group-addon"><span
+							class="glyphicon glyphicon-calendar"></span> </span>
 					</div>
 				</div>
-				<div>
-					<div class="col-md-4">
-						<div>
-							<div class="form-group">
-								<label for="exampleInputNumero">Assunto</label>
-								<h:inputText styleClass="form-control"
-									value="#{clienteMb.cliente.numero}" id="exampleInputNumero" />
-							</div>
-							<div class="form-group">
-								<label for="exampleInputComplemento">Comentario</label>
-								<h:inputText styleClass="form-control"
-									value="#{clienteMb.cliente.cidade}" id="exampleInputCidade" />
-							</div>
-							<div class="form-group">
-								<label>Documento</label>
-								<h:inputFile styleClass="form-control"
-									value="#{documentoMb.fotoUploaded}" />
-							</div>
-							<h:graphicImage rendered="#{not empty documentoMb.foto.nome}"
-								styleClass="img-responsive"
-								name="img/uploads/#{documentoMb.foto.nome}" />
-							<div>
-								<h:commandButton action="#{albumMb.salvar}"
-									class="btn btn-success" value="Salvar" />
-								<button type="reset" class="btn btn-danger">Limpar</button>
-							</div>
-
-
-
-
-						</div>
+				<div class="form-group">
+					<label>Data para entrega</label>
+					<div class='input-group date datetimepicker'>
+						<h:inputText styleClass="form-control"
+							value="#{documentoMb.documento.entrega}">
+							<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+						</h:inputText>
+						<span class="input-group-addon"><span
+							class="glyphicon glyphicon-calendar"></span> </span>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputComentario">Comentario</label>
+						<h:inputText styleClass="form-control"
+							value="#{documentoMb.documento.comentario}"
+							id="exampleInputComentario" />
+					</div>
+					<div class="form-group">
+						<label for="exampleInputAssunto">Assunto</label>
+						<h:inputText styleClass="form-control"
+							value="#{documentoMb.documento.assunto}" id="exampleInputAssunto" />
+					</div>
+					<div class="form-group">
+						<label for="exampleInputDocumento">Assunto</label>
+						<h:inputText styleClass="form-control"
+							value="#{documentoMb.documento.assunto}"
+							id="exampleInputAssunto2" />
 					</div>
 
 
+
+
+
+
+
+
+
+
+					<h:commandButton action="#{documentoMb.salvar}"
+						class="btn btn-success" value="Salvar" />
+					<button type="reset" class="btn btn-danger">Limpar</button>
 				</div>
-			</div>
-
-		</h:form>
-
-
+			</h:form>
+		</div>
 	</div>
-
-
-
-
-
-
 	<!--/.container-->
+
+	<h:outputScript name="/jquery.min.js" />
+	<h:outputScript name="/menu.js" />
+	<h:outputScript name="/bootstrap/js/bootstrap.js" />
+	<h:outputScript name="/bootstrap/template/offcanvas.js" />
 	<h:outputScript name="/js/datepicker-component.js" />
 	<h:outputScript name="/libs/moment-with-locales.js" />
 	<h:outputScript name="/js/menu.js" />
@@ -161,6 +150,5 @@
 	<h:outputScript
 		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
 	<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
-
 </h:body>
 </html>
