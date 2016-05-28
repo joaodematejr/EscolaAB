@@ -11,6 +11,7 @@
 		<class>entity.Cliente</class>
 		<class>entity.Documento</class>
 		<class>entity.Turma</class>
+		<class>entity.Questao</class>
 
 		<properties>
 			<!-- dados da conexao -->
