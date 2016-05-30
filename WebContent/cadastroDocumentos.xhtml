@@ -36,6 +36,8 @@
 			<nav>
 			<ul class="nav nav-pills pull-right">
 				<li role="presentation" class="active"><a href="index.html">Home</a></li>
+				<li role="presentation"><a href="#">Aluno</a></li>
+				<li role="presentation"><a href="#">Professor</a></li>
 				<li role="presentation"><a href="admListagem.xhtml">Administrador</a></li>
 
 			</ul>
@@ -66,8 +68,8 @@
 					<h:selectOneMenu styleClass="form-control"
 						value="#{documentoMb.documento.professor}">
 						<f:selectItem itemLabel="-" />
-						<f:selectItems value="#{clienteMb.listaClientes}" var="cliente"
-							itemLabel="#{cliente.nome}" itemValue="#{cliente}" />
+						<f:selectItems value="#{clienteMb.listaClientes}" var="professor"
+							itemLabel="#{professor.nome}" itemValue="#{professor}" />
 					</h:selectOneMenu>
 				</div>
 				<div class="form-group">
@@ -103,21 +105,13 @@
 							value="#{documentoMb.documento.assunto}" id="exampleInputAssunto" />
 					</div>
 					<div class="form-group">
-						<label for="exampleInputDocumento">Assunto</label>
-						<h:inputText styleClass="form-control"
-							value="#{documentoMb.documento.assunto}"
-							id="exampleInputAssunto2" />
-					</div>
-
-
-
-
-
-
-
-
-
-
+				<label>Documento</label>
+				<h:inputFile styleClass="form-control"
+					value="#{documentoMb.documentoUploaded}" />
+			</div>
+			<h:graphicImage rendered="#{not empty documentoMb.documento.nome}"
+			styleClass="img-responsive"
+				name="img/uploads/#{documentoMb.documento.nome}" />
 					<h:commandButton action="#{documentoMb.salvar}"
 						class="btn btn-success" value="Salvar" />
 					<button type="reset" class="btn btn-danger">Limpar</button>

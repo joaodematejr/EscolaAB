@@ -7,11 +7,11 @@
 
 		<!-- provedor/implementacao do JPA -->
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-
 		<class>entity.Cliente</class>
-		<class>entity.Documento</class>
-		<class>entity.Turma</class>
 		<class>entity.Questao</class>
+		<class>entity.Turma</class>
+
+	
 
 		<properties>
 			<!-- dados da conexao -->
