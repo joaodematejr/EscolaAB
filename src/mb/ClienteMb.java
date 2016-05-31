@@ -14,7 +14,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.event.ComponentSystemEvent;
 
-
 import entity.Cliente;
 import rn.ClienteRN;
 
@@ -25,9 +24,7 @@ public class ClienteMb {
 	private ClienteRN clienteRN;
 	private Long editarId;
 	private List<Cliente> listaClientes;
-	private List<Cliente> listaProfessor;
-
-
+	private List<Cliente> listaProfessores;
 
 	@PostConstruct
 	public void depoisDeConstruir() {
@@ -38,22 +35,12 @@ public class ClienteMb {
 	public Cliente getCliente() {
 		return cliente;
 	}
-	
-	
 
-
-
-	
-
-	
-	public List<Cliente> getListaProfessor() {
-		if(listaProfessor == null){
-			//listaProfessor = ClienteRN.listaProfessor();
+	public List<Cliente> getListaProfessores() {
+		if (listaProfessores == null) {
+			listaProfessores = clienteRN.listarProfessores();
 		}
-		return listaProfessor;
-	}
-	public void setListaProfessor(List<Cliente> listaProfessor) {
-		this.listaProfessor = listaProfessor;
+		return listaProfessores;
 	}
 
 	public void setCliente(Cliente cliente) {
@@ -109,9 +96,7 @@ public class ClienteMb {
 	}
 
 	public void carregarEdicao() {
-		if (editarId != null
-				&& !FacesContext.getCurrentInstance().getPartialViewContext()
-						.isAjaxRequest()) {
+		if (editarId != null && !FacesContext.getCurrentInstance().getPartialViewContext().isAjaxRequest()) {
 			cliente = clienteRN.buscarPorId(editarId);
 		}
 
