@@ -13,7 +13,7 @@ public class TurmaDAO extends DAO {// METODO PUBLIC
 
 
 public List<Turma> listar() {
-	Query query = getEM().createQuery("From Escursao", Turma.class);
+	Query query = getEM().createQuery("From Turma", Turma.class);
 	return query.getResultList();
 }
 

@@ -4,68 +4,113 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
+<h:outputScript name="/libs/jquery.min.js" />
+<h:outputScript name="/libs/moment-with-locales.js" />
+<h:outputScript name="/js/menu.js" />
+<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
+<h:outputScript
+	name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
 
+<script type="text/javascript">
+	function redirecionar() {
+		alert("Salvo com Sucesso!");
+
+	}
+</script>
 
 <h:head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title><ui:insert name="title">Cadastro</ui:insert></title>
-	<h:outputStylesheet name="/css/bootstrap.css" />
-	<link href="css/bootstrap.min.css" rel="stylesheet" />
+
+
+
 </h:head>
 
 <h:body>
-	<ui:define name="conteudo">
+	<f:metadata>
+		<f:viewParam name="id" value="#{turmaMb.editarId}" />
+	<f:event listener="#{turmaMb.carregarEdicao}" type="preRenderView" />
+	</f:metadata>
+	<div class="container">
+		<div class="header clearfix">
+			<nav>
+			<ul class="nav nav-pills pull-right">
+				<li role="presentation" class="active"><a href="index.html">Home</a></li>
+				<li role="presentation"><a href="admListagem.xhtml">Administrador</a></li>
+
+			</ul>
+			</nav>
+			<h3 class="text-muted">Escola Aprenda brincando</h3>
+		</div>
 		<div class="page-header">
 			<h1>Turmas</h1>
-			<h:link outcome="/Turma" styleClass="btn btn-success">
+			<h:link outcome="/turma" styleClass="btn btn-success">
 				<span class="glyphicon glyphicon-plus"></span>
 			</h:link>
 			<h:messages />
 			<h:form>
-				<h:dataTable styleClass="table" value="#{TurmaMb.listaTurma}"
-					var="Turma">
+				<h:dataTable styleClass="table" value="#{turmaMb.listarTurma}"
+					var="turma">
 					<h:column>
 						<f:facet name="header">ID</f:facet>
-						<h:outputText value="#{Turma.id}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Inicio</f:facet>
-						<h:outputText value="#{Turma.inicio}">
-							<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
-						</h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">Fim</f:facet>
-						<h:outputText value="#{Turma.termino}">
-							<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
-						</h:outputText>
+						<h:outputText value="#{turma.id}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">Professor</f:facet>
-						<h:outputText value="#{Turma.Professor.nome}" />
+						<h:outputText value="#{turma.professor.nome}" />
 					</h:column>
 					<h:column>
 						<span> <h:link styleClass="btn btn-default"
-								outcome="/Turma" value="Editar">
-								<f:param name="id" value="#{Turma.id}" />
+								outcome="/album">
+								<span class="glyphicon glyphicon-picture"></span>
+								<f:param name="idturma" value="#{turma.id}" />
+							</h:link>
+						</span>
+						<span> <h:link styleClass="btn btn-default"
+								outcome="/turma">
+								<span class="glyphicon glyphicon-pencil"></span>
+								<f:param name="id" value="#{turma.id}" />
 							</h:link>
 						</span>
 						<span> <h:commandLink styleClass="btn btn-warning"
-								action="#{TurmaMb.excluir(Turma.id)}" value="Excluir"
-								onclick="return confirm('Tem certeza da exclusão da Turma para #{Turma.destino}')" />
+								action="#{turmaMb.excluir(turma.id)}"
+								onclick="return confirm('Tem certeza da exclusão da Turma para #{turma.destino}')">
+								<span class="glyphicon glyphicon-trash"></span>
+								 </h:commandLink>
 						</span>
 					</h:column>
 				</h:dataTable>
 			</h:form>
 		</div>
-	</ui:define>
-	<!--/.container-->
 
-	<h:outputScript name="/jquery.min.js" />
-	<h:outputScript name="/menu.js" />
-	<h:outputScript name="/bootstrap/js/bootstrap.js" />
-	<h:outputScript name="/bootstrap/template/offcanvas.js" />
+
+
+
+
+
+	<!--/.container-->
+	<h:outputScript name="/js/datepicker-component.js" />
+	<h:outputScript name="/libs/moment-with-locales.js" />
+	<h:outputScript name="/js/menu.js" />
+	<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
+	<h:outputScript
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+	<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
+	<h:outputStylesheet name="/libs/bootstrap/css/bootstrap.css" />
+	<h:outputStylesheet
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.css" />
+	<h:outputStylesheet name="/libs/bootstrap/template/offcanvas.css" />
+
+	<h:outputScript name="/libs/jquery.min.js" />
+	<h:outputScript name="/libs/moment-with-locales.js" />
+	<h:outputScript name="/js/menu.js" />
+	<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
+	<h:outputScript
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+	<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
+</div>
 </h:body>
 </html>

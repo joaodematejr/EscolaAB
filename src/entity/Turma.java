@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+
 import entity.Turma;
 
 @Entity
@@ -24,128 +25,75 @@ public class Turma {
 	private Date inicio;
 	private Date termino;
 	@ManyToOne
-	private Cliente Professor;
+	private Cliente professor;
 	@ManyToMany
 	private List<Cliente> clienteTurma;
-
-
-
-
-	public Cliente getProfessor() {
-		return Professor;
-	}
-
-
-
-
-
-
-	public void setProfessor(Cliente Professor) {
-		this.Professor = Professor;
-	}
-
-
-
-
-
-
-	public void setClienteTurma(List<Cliente> clienteTurma) {
-		this.clienteTurma = clienteTurma;
-	}
-
-
-
-
-
-
-	public String getNome() {
-		return nome;
-	}
-
-
-
-
-
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-
-
-
-
 
 	public Long getId() {
 		return id;
 	}
 
-
-
-
-
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public Perfil getPerfil() {
 		return perfil;
 	}
 
-
-
-
-
-
 	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
 	}
 
-
-
-
-
-
-	public void setId(Long id) {
-		this.id = id;
+	public String getNome() {
+		return nome;
 	}
 
-
-
-
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
 	public Date getInicio() {
-		return getInicio();
+		return inicio;
 	}
-
-
-
-
-
 
 	public void setInicio(Date inicio) {
-		inicio = inicio;
+		this.inicio = inicio;
 	}
-
-
-
-
-
 
 	public Date getTermino() {
 		return termino;
 	}
 
-
-
-
-
-
 	public void setTermino(Date termino) {
-		termino = termino;
+		this.termino = termino;
 	}
 
 
 
+	public Cliente getProfessor() {
+		return professor;
+	}
 
+	public void setProfessor(Cliente professor) {
+		this.professor = professor;
+	}
 
+	public List<Cliente> getClienteTurma() {
+		return clienteTurma;
+	}
+
+	public void setClienteTurma(List<Cliente> clienteTurma) {
+		this.clienteTurma = clienteTurma;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -164,25 +112,4 @@ public class Turma {
 		return true;
 	}
 
-
-
-
-
-
-	public void setClientesTurma(ArrayList<Cliente> arrayList) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-
-
-
-	public List<entity.Turma> getClienteTurma() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
-

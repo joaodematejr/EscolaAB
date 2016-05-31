@@ -10,7 +10,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 import javax.servlet.http.Part;
 
-import com.sun.org.apache.bcel.internal.generic.GETSTATIC;
+
 
 public class UploadUtil {
 	private static final Map<String, String> TIPOS_PERMITIDOS = new HashMap<String, String>();

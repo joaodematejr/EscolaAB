@@ -13,16 +13,16 @@ public class TurmaConversos implements Converter {
 
 	@Override
 	public Object getAsObject(FacesContext facesContext,
-			UIComponent uiComponent, String value) {
-		TurmaRN turmaRN = new TurmaRN();
-		Long id = Long.parseLong(value);
-		return turmaRN.buscarPorId(id);
+			UIComponent uiComponent, String valor) {
+		TurmaRN rn = new TurmaRN();
+		Long id = Long.parseLong(valor);
+		return rn.buscarPorId(id);
 	}
 
 	@Override
 	public String getAsString(FacesContext facesContext,
-			UIComponent uiComponent, Object value) {
-		Turma turma = (Turma) value;
+			UIComponent uiComponent, Object valor) {
+		Turma turma = (Turma) valor;
 		return turma.getId().toString();
 	}
 }

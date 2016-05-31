@@ -6,7 +6,7 @@ import java.util.List;
 
 import dao.TurmaDAO;
 import entity.Turma;
-import sun.misc.Perf;
+
 
 public class TurmaRN {
 	private TurmaDAO dao;

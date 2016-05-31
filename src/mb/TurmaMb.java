@@ -20,11 +20,11 @@ import entity.Turma;
 
 
 @ViewScoped
-@ManagedBean
+@ManagedBean (name= "turmaMb")
 public class TurmaMb {
-	private List<Turma> ListarTurma;
-	private TurmaRN TurmaRN;
-	private Turma Turma;
+	private List<Turma> listarTurma;
+	private TurmaRN turmaRN;
+	private Turma turma;
 
 	private Long editarId;
 
@@ -32,48 +32,46 @@ public class TurmaMb {
 
 	@PostConstruct
 	public void init() {
-		TurmaRN = new TurmaRN();
-		Turma = new Turma();
-		Turma.setClientesTurma(new ArrayList<Cliente>());
+		turmaRN = new TurmaRN();
+		turma = new Turma();
+		turma.setClienteTurma(new ArrayList<Cliente>());
 	}
 
 	public List<Turma> getListaTurma() {
-		if (ListarTurma == null) {
-			ListarTurma = TurmaRN.listar();
+		if (listarTurma == null) {
+			listarTurma = turmaRN.listar();
 		}
-		return ListarTurma;
+		return listarTurma;
 	}
 
 	public void setListaTurma(List<Turma> listaTurma) {
-		this.ListarTurma = listaTurma;
+		this.listarTurma = listaTurma;
 	}
 
-	public Turma getEscursao() {
-		return Turma;
-	}
+	
 
 	public List<Turma> getListarTurma() {
-		return ListarTurma;
+		return listarTurma;
 	}
 
 	public void setListarTurma(List<Turma> listarTurma) {
-		ListarTurma = listarTurma;
+		this.listarTurma = listarTurma;
 	}
 
 	public TurmaRN getTurmaRN() {
-		return TurmaRN;
+		return turmaRN;
 	}
 
 	public void setTurmaRN(TurmaRN turmaRN) {
-		TurmaRN = turmaRN;
+		this.turmaRN = turmaRN;
 	}
 
 	public Turma getTurma() {
-		return Turma;
+		return turma;
 	}
 
 	public void setTurma(Turma turma) {
-		Turma = turma;
+		this.turma = turma;
 	}
 
 	public void setClienteSelecionado(Cliente clienteSelecionado) {
@@ -92,40 +90,45 @@ public class TurmaMb {
 		if (editarId != null &&  
 				!FacesContext.getCurrentInstance()
 				.getPartialViewContext().isAjaxRequest()) {
-			Turma = TurmaRN.buscarPorId(editarId);
+			turma = turmaRN.buscarPorId(editarId);
 		}
 	}
 
+
+
+	public Cliente getClienteSelecionado() {
+		return clienteSelecionado;
+	}
 	public void adicionarCliente(AjaxBehaviorEvent event) {
-		if(Turma.getClienteTurma().contains(clienteSelecionado)){
+		if(turma.getClienteTurma().contains(clienteSelecionado)){
 			return;
 		}
-	//	Turma.getClienteTurma().add(clienteSelecionado);
+		turma.getClienteTurma().add(clienteSelecionado);
 		clienteSelecionado = null;
 	}
 
 	public void excluirCliente(AjaxBehaviorEvent event) {
 		Cliente cliente = (Cliente) event.getComponent().getAttributes()
 				.get("idCliente");
-		Turma.getClienteTurma().remove(cliente);
+		turma.getClienteTurma().remove(cliente);
 	}
 	
 	public String excluir(String idParam){
 		Long id = Long.parseLong(idParam);
-		TurmaRN.excluir(id);
-		ListarTurma = null;
+		turmaRN.excluir(id);
+		listarTurma = null;
 		
 		return "";
 	}
 
 	public String salvar() throws Throwable {
 		try {
-			TurmaRN.salvar(Turma);
+			turmaRN.salvar(turma);
 			FacesContext.getCurrentInstance().addMessage(
 					null,
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "Salvo",
 							"Salvo com sucesso."));
-			return "/Turmas";
+			return "/turmas";
 		} catch (IllegalArgumentException exception) {
 			exception.printStackTrace();
 			FacesContext.getCurrentInstance().addMessage(

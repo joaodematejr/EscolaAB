@@ -14,6 +14,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.event.ComponentSystemEvent;
 
+
 import entity.Cliente;
 import rn.ClienteRN;
 
@@ -24,6 +25,9 @@ public class ClienteMb {
 	private ClienteRN clienteRN;
 	private Long editarId;
 	private List<Cliente> listaClientes;
+	private List<Cliente> listaProfessor;
+
+
 
 	@PostConstruct
 	public void depoisDeConstruir() {
@@ -33,6 +37,20 @@ public class ClienteMb {
 
 	public Cliente getCliente() {
 		return cliente;
+	}
+	
+	
+
+
+
+	
+
+	public List<Cliente> getListaProfessor() {
+		return listaProfessor;
+	}
+
+	public void setListaProfessor(List<Cliente> listaProfessor) {
+		this.listaProfessor = listaProfessor;
 	}
 
 	public void setCliente(Cliente cliente) {
