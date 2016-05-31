@@ -2,6 +2,7 @@ package rn;
 
 import java.util.List;
 
+
 import dao.ClienteDAO;
 import entity.Cliente;
 
@@ -28,7 +29,9 @@ public class ClienteRN {
 		dao.excluir(id);
 	}
 
-	public List<Cliente> listarProfessores() {
-		return dao.listarProfessores();
+	public List<Cliente> listaProfessor() {
+		return dao.listaProfessor();
 	}
+
+
 }

@@ -28,7 +28,7 @@ public class ClienteDAO extends DAO {// METODO PUBLIC
 		getEM().remove(cliente);
 	}
 
-	public List<Cliente> listarProfessores() {
+	public List<Cliente> listaProfessor() {
 		Query query = getEM().createQuery("From Cliente u Where u.perfil",
 				Cliente.class);
 		query.setParameter("perfil", Perfil.PROFESSOR);

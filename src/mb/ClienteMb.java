@@ -45,10 +45,13 @@ public class ClienteMb {
 
 	
 
+	
 	public List<Cliente> getListaProfessor() {
+		if(listaProfessor == null){
+			//listaProfessor = ClienteRN.listaProfessor();
+		}
 		return listaProfessor;
 	}
-
 	public void setListaProfessor(List<Cliente> listaProfessor) {
 		this.listaProfessor = listaProfessor;
 	}
