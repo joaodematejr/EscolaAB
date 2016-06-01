@@ -23,7 +23,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title><ui:insert name="title">Cadastro</ui:insert></title>
+	<title><ui:insert name="title">listar turma</ui:insert></title>
 
 
 
@@ -52,7 +52,7 @@
 			</h:link>
 			<h:messages />
 			<h:form>
-				<h:dataTable styleClass="table" value="#{turmaMb.listarTurma}"
+				<h:dataTable styleClass="table" value="#{turmaMb.listaTurma}"
 					var="turma">
 					<h:column>
 						<f:facet name="header">ID</f:facet>
@@ -61,6 +61,14 @@
 					<h:column>
 						<f:facet name="header">Professor</f:facet>
 						<h:outputText value="#{turma.professor.nome}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Data inicio</f:facet>
+						<h:outputText value="#{turma.inicio}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Data Termino</f:facet>
+						<h:outputText value="#{turma.inicio}" />
 					</h:column>
 					<h:column>
 						<span> <h:link styleClass="btn btn-default"
@@ -77,7 +85,7 @@
 						</span>
 						<span> <h:commandLink styleClass="btn btn-warning"
 								action="#{turmaMb.excluir(turma.id)}"
-								onclick="return confirm('Tem certeza da exclusão da Turma para #{turma.destino}')">
+								onclick="return confirm('Tem certeza da exclusão da Turma')">
 								<span class="glyphicon glyphicon-trash"></span>
 								 </h:commandLink>
 						</span>
