@@ -34,4 +34,10 @@ public class ClienteDAO extends DAO {// METODO PUBLIC
 
 		return query.getResultList();
 	}
+	public List<Cliente> listarAlunos() {
+		Query query = getEM().createQuery("From Cliente u Where u.perfil = :perfil", Cliente.class);
+		query.setParameter("perfil", Perfil.ALUNO);
+
+		return query.getResultList();
+	}
 }

@@ -32,4 +32,8 @@ public class ClienteRN {
 		return dao.listarProfessores();
 	}
 
+	public List<Cliente> listarAlunos() {
+		return dao.listarAlunos();
+	}
+
 }

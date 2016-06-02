@@ -63,27 +63,26 @@
 				</h:panelGroup>
 				<h:inputHidden value="#{documentoMb.documento.id}" />
 				<div class="form-group">
-					<label>Perfil Professor</label>
+					<label>Professor</label>
 					<h:selectOneMenu styleClass="form-control"
 						value="#{documentoMb.documento.professor}">
 						<f:selectItem itemLabel="-" />
-						<f:selectItems value="#{clienteMb.listaProfessores}" var="professor"
-							itemLabel="#{professor.nome}" itemValue="#{professor}" />
+						<f:selectItems value="#{clienteMb.listaProfessores}"
+							var="professor" itemLabel="#{professor.nome}"
+							itemValue="#{professor}" />
 					</h:selectOneMenu>
 				</div>
 				<div class="form-group">
-					<label>Data da postagem</label>
-					<div class='input-group date datetimepicker'>
-						<h:inputText styleClass="form-control"
-							value="#{documentoMb.documento.cadastro}">
-							<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
-						</h:inputText>
-						<span class="input-group-addon"><span
-							class="glyphicon glyphicon-calendar"></span> </span>
-					</div>
+					<label>Aluno</label>
+					<h:selectOneMenu styleClass="form-control"
+						value="#{documentoMb.documento.aluno}">
+						<f:selectItem itemLabel="-" />
+						<f:selectItems value="#{clienteMb.listaAlunos}" var="aluno"
+							itemLabel="#{aluno.nome}" itemValue="#{aluno}" />
+					</h:selectOneMenu>
 				</div>
 				<div class="form-group">
-					<label>Data para entrega</label>
+					<label>Data de entrega</label>
 					<div class='input-group date datetimepicker'>
 						<h:inputText styleClass="form-control"
 							value="#{documentoMb.documento.entrega}">
@@ -99,18 +98,13 @@
 							id="exampleInputComentario" />
 					</div>
 					<div class="form-group">
-						<label for="exampleInputAssunto">Assunto</label>
-						<h:inputText styleClass="form-control"
-							value="#{documentoMb.documento.assunto}" id="exampleInputAssunto" />
+						<label>Trabalho</label>
+						<h:inputFile styleClass="form-control"
+							value="#{documentoMb.documentoUploaded}" />
 					</div>
-					<div class="form-group">
-				<label>Documento</label>
-				<h:inputFile styleClass="form-control"
-					value="#{documentoMb.documentoUploaded}" />
-			</div>
-			<h:graphicImage rendered="#{not empty documentoMb.documento.nome}"
-			styleClass="img-responsive"
-				name="img/uploads/#{documentoMb.documento.nome}" />
+					<h:graphicImage rendered="#{not empty documentoMb.documento.nome}"
+						styleClass="img-responsive"
+						name="img/uploads/#{documentoMb.documento.nome}" />
 					<h:commandButton action="#{documentoMb.salvar}"
 						class="btn btn-success" value="Salvar" />
 					<button type="reset" class="btn btn-danger">Limpar</button>

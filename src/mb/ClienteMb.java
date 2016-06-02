@@ -25,6 +25,7 @@ public class ClienteMb {
 	private Long editarId;
 	private List<Cliente> listaClientes;
 	private List<Cliente> listaProfessores;
+	private List<Cliente> listaAlunos;
 
 	@PostConstruct
 	public void depoisDeConstruir() {
@@ -41,6 +42,12 @@ public class ClienteMb {
 			listaProfessores = clienteRN.listarProfessores();
 		}
 		return listaProfessores;
+	}
+	public List<Cliente> getListaAlunos() {
+		if (listaAlunos == null) {
+			listaAlunos = clienteRN.listarAlunos();
+		}
+		return listaAlunos;
 	}
 
 	public void setCliente(Cliente cliente) {

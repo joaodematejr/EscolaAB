@@ -14,7 +14,7 @@
 
 <script type="text/javascript">
 	function redirecionar() {
-		alert("Questão Salvo com Sucesso!");
+		alert("Turma Salvo com Sucesso!");
 
 	}
 </script>
@@ -28,16 +28,16 @@
 
 </h:head>
 <h:body>
-<div class="container">
+
+	<div class="container">
 		<div class="header clearfix">
 			<nav>
-			<ul class="nav nav-pills pull-right">
-				<li role="presentation" class="active"><a href="index.html">Home</a></li>
-				<li role="presentation"><a href="#">Aluno</a></li>
-					<li role="presentation"><a href="#">Professor</a></li>
-				<li role="presentation"><a href="admListagem.xhtml">Administrador</a></li>
-
-			</ul>
+		<ul class="nav nav-pills pull-right">
+					<li role="presentation" class="active"><a href="index.html">Home</a></li>
+					<li role="presentation"><a href="aluno.xhtml">Aluno</a></li>
+					<li role="presentation"><a href="professor.xhtml">Professor</a></li>
+					<li role="presentation"><a href="admListagem.xhtml">Administrador</a></li>
+				</ul>
 			</nav>
 			<h3 class="text-muted">Escola Aprenda brincando</h3>
 		</div>
@@ -46,13 +46,17 @@
 				Bem vindo <small> Adminstrador </small>
 			</h1>
 		</div>
-	</div>
+		<div class="col-md-6"></div>
+		<div class="col-md-6">
 
-<h1>
-			Cadastro turma
-		</h1>
+			<h1>
+				<small>Cadastro de turmas</small>
+			</h1>
+
+		</div>
 		<h:messages />
 		<h:form>
+		<div class="col-md-4 ">
 			<h:panelGroup rendered="#{not empty turmaMb.turma.id}">
 				<div class="form-group id">
 					<label>ID</label>
@@ -62,59 +66,18 @@
 			</h:panelGroup>
 			<h:inputHidden value="#{turmaMb.turma.id}" />
 
-			<div class="form-group">
-				<label>Professor</label>
-				<h:selectOneMenu styleClass="form-control"
-					value="#{turmaMb.turma.professor}">
-					<f:selectItem itemLabel="-" />
-					<f:selectItems value="#{clienteMb.listaProfessores}" var="professor"
-						itemLabel="#{professor.nome}" itemValue="#{professor}" />
-				</h:selectOneMenu>
-			</div>
-		
-				<legend>Alunos</legend>
-				<div class="row">
-					<div class="col-sm-9">
-						<h:selectOneMenu id="uiSelecionaCliente" styleClass="form-control"
-							value="#{turmaMb.clienteSelecionado}">
-							<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
-							<f:selectItems value="#{clienteMb.listaClientes}" var="cli"
-								itemLabel="#{cli.nome}" itemValue="#{cli}" />
-						</h:selectOneMenu>
-					</div>
-					<div class="col-sm-3">
-						<h:commandLink styleClass="btn btn-success">
-							<f:ajax event="click" execute="uiSelecionaCliente"
-								listener="#{turmaMb.adicionarCliente}"
-								render="uiClientesturma uiSelecionaCliente" />
-							<span class="glyphicon glyphicon-plus"></span>
-						</h:commandLink>
-					</div>
+			
+				<div class="form-group">
+					<label>Professor</label>
+					<h:selectOneMenu styleClass="form-control"
+						value="#{turmaMb.turma.professor}">
+						<f:selectItem itemLabel="-" />
+						<f:selectItems value="#{clienteMb.listaProfessores}"
+							var="professor" itemLabel="#{professor.nome}"
+							itemValue="#{professor}" />
+					</h:selectOneMenu>
 				</div>
-				
-				<div class="row">
-					<div class="col-sm-12">
-						<h:dataTable styleClass="table-condensed table-hover"
-							id="uiClientesturma" value="#{turmaMb.turma.clienteTurma}"
-							var="cliente">
-							<h:column>
-								<f:facet name="header">Nome</f:facet>
-								<h:outputText value="#{cliente.nome}" />
-							</h:column>
-							<h:column>
-								<f:facet name="header">controle</f:facet>
-								<h:commandLink>
-									<f:attribute name="idCliente" value="#{cliente}" />
-									<f:ajax event="click" execute="@form" render="@form"
-									listener="#{turmaMb.excluirCliente}"/>
-									<span class="glyphicon glyphicon-remove-circle"></span>
-								</h:commandLink> 
-							</h:column>
-							
-						</h:dataTable>
-					</div>
-				</div>
-					<div class="form-group">
+				<div class="form-group">
 					<label>Data inicio das aulas</label>
 					<div class='input-group date datetimepicker'>
 						<h:inputText styleClass="form-control"
@@ -124,30 +87,65 @@
 						<span class="input-group-addon"><span
 							class="glyphicon glyphicon-calendar"></span> </span>
 					</div>
-						<div class="form-group">
-					<label>Data termino das aulas</label>
-					<div class='input-group date datetimepicker'>
-						<h:inputText styleClass="form-control"
-							value="#{turmaMb.turma.termino}">
-							<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
-						</h:inputText>
-						<span class="input-group-addon"><span
-							class="glyphicon glyphicon-calendar"></span> </span>
-					</div></div>
-			<fieldset>
-			</fieldset>
+					<div class="form-group">
+						<label>Data termino das aulas</label>
+						<div class='input-group date datetimepicker'>
+							<h:inputText styleClass="form-control"
+								value="#{turmaMb.turma.termino}">
+								<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+							</h:inputText>
+							<span class="input-group-addon"><span
+								class="glyphicon glyphicon-calendar"></span> </span>
+						</div>
+					</div>
+					<legend>Alunos</legend>
 
-		
-			<button class="btn btn-default">Restaurar</button>
-			<h:commandButton action="#{turmaMb.salvar}" value="Salvar"
-				styleClass="btn btn-primary" /></div>
+					<div class="col-md-15">
+						<h:selectOneMenu id="uiSelecionaCliente" styleClass="form-control"
+							value="#{turmaMb.clienteSelecionado}">
+							<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+							<f:selectItems value="#{clienteMb.listaAlunos}" var="cli"
+								itemLabel="#{cli.nome}" itemValue="#{cli}" />
+						</h:selectOneMenu>
+
+						
+					</div>
+					<div class="row">
+						<div class="col-sm-10">
+							<h:dataTable styleClass="table-condensed table-hover"
+								id="uiClientesturma" value="#{turmaMb.turma.clienteTurma}"
+								var="cliente">
+								<h:column>
+									<f:facet name="header">Nome</f:facet>
+									<h:outputText value="#{cliente.nome}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">Excluir</f:facet>
+									<h:commandLink>
+										<f:attribute name="idCliente" value="#{cliente}" />
+										<f:ajax event="click" execute="@form" render="@form"
+											listener="#{turmaMb.excluirCliente}" />
+										<span class="glyphicon glyphicon-remove-circle"></span>
+									</h:commandLink>
+								</h:column>
+
+							</h:dataTable>
+						</div>
+					</div>
+					<button class="btn btn-danger">Limpar</button>
+					<h:commandButton action="#{turmaMb.salvar}" value="Salvar"
+						styleClass="btn btn-success" />
+					<h:commandLink styleClass="btn btn-info">
+						<f:ajax event="click" execute="uiSelecionaCliente"
+							listener="#{turmaMb.adicionarCliente}"
+							
+							render="uiClientesturma uiSelecionaCliente" />
+						<span class="glyphicon glyphicon-ok"></span>
+					</h:commandLink>
+				</div>
+			</div>
 		</h:form>
-		
-		
-		
-		
-		
-
+	</div>
 	<!--/.container-->
 	<h:outputScript name="/js/datepicker-component.js" />
 	<h:outputScript name="/libs/moment-with-locales.js" />
@@ -168,6 +166,5 @@
 	<h:outputScript
 		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
 	<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
-
 </h:body>
 </html>

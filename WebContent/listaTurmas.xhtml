@@ -32,16 +32,17 @@
 <h:body>
 	<f:metadata>
 		<f:viewParam name="id" value="#{turmaMb.editarId}" />
-	<f:event listener="#{turmaMb.carregarEdicao}" type="preRenderView" />
+		<f:event listener="#{turmaMb.carregarEdicao}" type="preRenderView" />
 	</f:metadata>
 	<div class="container">
 		<div class="header clearfix">
 			<nav>
 			<ul class="nav nav-pills pull-right">
-				<li role="presentation" class="active"><a href="index.html">Home</a></li>
-				<li role="presentation"><a href="admListagem.xhtml">Administrador</a></li>
-
-			</ul>
+					<li role="presentation" class="active"><a href="index.html">Home</a></li>
+					<li role="presentation"><a href="aluno.xhtml">Aluno</a></li>
+					<li role="presentation"><a href="professor.xhtml">Professor</a></li>
+					<li role="presentation"><a href="admListagem.xhtml">Administrador</a></li>
+				</ul>
 			</nav>
 			<h3 class="text-muted">Escola Aprenda brincando</h3>
 		</div>
@@ -70,6 +71,7 @@
 						<f:facet name="header">Data Termino</f:facet>
 						<h:outputText value="#{turma.inicio}" />
 					</h:column>
+
 					<h:column>
 						<span> <h:link styleClass="btn btn-default"
 								outcome="/album">
@@ -87,7 +89,7 @@
 								action="#{turmaMb.excluir(turma.id)}"
 								onclick="return confirm('Tem certeza da exclusão da Turma')">
 								<span class="glyphicon glyphicon-trash"></span>
-								 </h:commandLink>
+							</h:commandLink>
 						</span>
 					</h:column>
 				</h:dataTable>
@@ -99,26 +101,26 @@
 
 
 
-	<!--/.container-->
-	<h:outputScript name="/js/datepicker-component.js" />
-	<h:outputScript name="/libs/moment-with-locales.js" />
-	<h:outputScript name="/js/menu.js" />
-	<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
-	<h:outputScript
-		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
-	<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
-	<h:outputStylesheet name="/libs/bootstrap/css/bootstrap.css" />
-	<h:outputStylesheet
-		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.css" />
-	<h:outputStylesheet name="/libs/bootstrap/template/offcanvas.css" />
+		<!--/.container-->
+		<h:outputScript name="/js/datepicker-component.js" />
+		<h:outputScript name="/libs/moment-with-locales.js" />
+		<h:outputScript name="/js/menu.js" />
+		<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
+		<h:outputScript
+			name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+		<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
+		<h:outputStylesheet name="/libs/bootstrap/css/bootstrap.css" />
+		<h:outputStylesheet
+			name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.css" />
+		<h:outputStylesheet name="/libs/bootstrap/template/offcanvas.css" />
 
-	<h:outputScript name="/libs/jquery.min.js" />
-	<h:outputScript name="/libs/moment-with-locales.js" />
-	<h:outputScript name="/js/menu.js" />
-	<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
-	<h:outputScript
-		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
-	<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
-</div>
+		<h:outputScript name="/libs/jquery.min.js" />
+		<h:outputScript name="/libs/moment-with-locales.js" />
+		<h:outputScript name="/js/menu.js" />
+		<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
+		<h:outputScript
+			name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+		<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
+	</div>
 </h:body>
 </html>
