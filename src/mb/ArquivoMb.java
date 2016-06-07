@@ -15,7 +15,7 @@ import rn.TurmaRN;
 
 @ViewScoped
 @ManagedBean
-public class ArquivosMb {
+public class ArquivoMb {
 	private String turmaId;
 	private Turma turma;
 	private Documento docu;

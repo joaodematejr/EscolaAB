@@ -5,10 +5,10 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-<!-- <f:metadata> -->
-<!-- 	<f:viewParam name="idturma" value="#{albumMb.turmaId}" /> -->
-<!-- 	<f:event listener="#{albumMb.load}" type="preRenderView" /> -->
-<!-- </f:metadata> -->
+<f:metadata>
+	<f:viewParam name="idturma" value="#{arquivoMb.turmaId}" />
+	<f:event listener="#{arquivoMb.load}" type="preRenderView" />
+</f:metadata>
 
 <h:head>
 	<meta charset="utf-8" />
@@ -26,6 +26,10 @@
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
 </h:head>
 <h:body>
+	<f:metadata>
+		<f:viewParam name="id" value="#{turmaMb.editarId}" />
+		<f:event listener="#{turmaMb.carregarEdicao}" type="preRenderView" />
+	</f:metadata>
 	<div class="container">
 		<div class="header clearfix">
 			<nav>
@@ -44,22 +48,32 @@
 			</h1>
 		</div>
 	</div>
+	<div class="row">
+		<div class="container-fluid">
+			<div class="col-md-1 col-md-offset-3"></div>
+			<div>
+				<b>ID da Turma: </b>
+				<h:outputText value="#{arquivoMb.turmaId}" />
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="container-fluid">
+			<div class="col-md-1 col-md-offset-3"></div>
+			<div>
+				<b>ID do Professor: </b>
+				<h:outputText value="#{arquivoMb.turma.professor}" />
+			</div>
+		</div>
+	</div>
+
 
 	<div class="row">
 		<div class="container-fluid">
 			<div class="col-md-1 col-md-offset-3"></div>
 			<div>
-				<b>Professor: </b>
-				<h:outputText value="#{albumMb.escursao.destino}" />
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="container-fluid">
-			<div class="col-md-1 col-md-offset-3"></div>
-			<div>
-				<b>Data inicio: </b>
-				<h:outputText value="#{albumMb.escursao.partida}">
+				<b>Data inicio das aulas: </b>
+				<h:outputText value="#{arquivoMb.turma.inicio}">
 					<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
 				</h:outputText>
 			</div>
@@ -69,13 +83,53 @@
 		<div class="container-fluid">
 			<div class="col-md-1 col-md-offset-3"></div>
 			<div>
-				<b>Data Termino: </b>
-				<h:outputText value="#{albumMb.escursao.partida}">
+				<b>Previsao de termino: </b>
+				<h:outputText value="#{arquivoMb.turma.inicio}">
 					<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
 				</h:outputText>
 			</div>
 		</div>
 	</div>
+	<div class="col-md-5 col-md-4"></div>
+	<div class="col-md-0 col-md-0"></div>
+	<div class="col-md-5 col-md-0">
+		<h:link outcome="/cadastroDocumentos" styleClass="btn btn-success">
+			<f:param name="idturma" value="#{arquivoMb.turma.id}" />
+			<span>Documento</span>
+		</h:link>
+		<h:link outcome="/listaTurmas" styleClass="btn btn-danger">
+			<f:param name="idturma" value="#{arquivoMb.turma.id}" />
+			<span>Turmas</span>
+		</h:link>
+	</div>
+	<h:form>
+		<h:dataTable styleClass="table" value="#{albumMb.imagens}" var="file">
+			<h:column>
+				<h:outputText value="#{file.data}" />
+			</h:column>
+			<h:column>
+				<h:graphicImage styleClass="img-thumbnail" style="height:100px;"
+					name="img/uploads/#{file.nome}" />
+			</h:column>
+			<h:column>
+				<span> <h:link styleClass="btn btn-warning"
+						outcome="/admin/enviarfoto">
+						<f:param name="idimagem" value="#{file.id}" />
+						<f:param name="idescursao" value="#{albumMb.escursao.id}" />
+
+						<span class="glyphicon glyphicon-pencil"></span>
+					</h:link>
+				</span>
+				<span> <h:commandLink styleClass="btn btn-warning"
+						action="#{albumMb.excluir(file.id)}"
+						onclick="return confirm('Tem certeza da exclusão da foto: #{file.nome}')">
+						<f:ajax render="@form" />
+						<span class="glyphicon glyphicon-trash"></span>
+					</h:commandLink>
+				</span>
+			</h:column>
+		</h:dataTable>
+	</h:form>
 
 
 	<!--/.container-->

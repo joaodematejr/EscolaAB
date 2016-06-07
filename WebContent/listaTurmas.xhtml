@@ -38,11 +38,11 @@
 		<div class="header clearfix">
 			<nav>
 			<ul class="nav nav-pills pull-right">
-					<li role="presentation" class="active"><a href="index.html">Home</a></li>
-					<li role="presentation"><a href="aluno.xhtml">Aluno</a></li>
-					<li role="presentation"><a href="professor.xhtml">Professor</a></li>
-					<li role="presentation"><a href="admListagem.xhtml">Administrador</a></li>
-				</ul>
+				<li role="presentation" class="active"><a href="index.html">Home</a></li>
+				<li role="presentation"><a href="aluno.xhtml">Aluno</a></li>
+				<li role="presentation"><a href="professor.xhtml">Professor</a></li>
+				<li role="presentation"><a href="admListagem.xhtml">Administrador</a></li>
+			</ul>
 			</nav>
 			<h3 class="text-muted">Escola Aprenda brincando</h3>
 		</div>
@@ -52,6 +52,7 @@
 				<span class="glyphicon glyphicon-plus"></span>
 			</h:link>
 			<h:messages />
+			<table class="table table-hover">
 			<h:form>
 				<h:dataTable styleClass="table" value="#{turmaMb.listaTurma}"
 					var="turma">
@@ -74,7 +75,7 @@
 
 					<h:column>
 						<span> <h:link styleClass="btn btn-default"
-								outcome="/album">
+								outcome="/arquivos">
 								<span class="glyphicon glyphicon-picture"></span>
 								<f:param name="idturma" value="#{turma.id}" />
 							</h:link>
@@ -94,7 +95,9 @@
 					</h:column>
 				</h:dataTable>
 			</h:form>
+			</table>
 		</div>
+		
 
 
 
