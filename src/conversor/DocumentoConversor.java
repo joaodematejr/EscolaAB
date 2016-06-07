@@ -4,9 +4,8 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
-
 import entity.Documento;
-import rn.AlbumRN;
+import rn.ArquivoRN;
 
 @FacesConverter(forClass = Documento.class)
 public class DocumentoConversor implements Converter {
@@ -15,13 +14,12 @@ public class DocumentoConversor implements Converter {
 	public Object getAsObject(FacesContext arg0, UIComponent arg1, String valor) {
 		try {
 			Long id = Long.parseLong(valor);
-			AlbumRN albumRN = new AlbumRN();
-			Documento documento = albumRN.buscarDocumentoPorId(id);
+			ArquivoRN arquivoRN = new ArquivoRN();
+			Documento documento = arquivoRN.buscarDocumentoPorID(id);
 			return documento;
 		} catch (NumberFormatException e) {
 			return new Documento();
 		}
-
 	}
 
 	@Override

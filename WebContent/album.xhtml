@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<!-- <f:metadata> -->
+<!-- 	<f:viewParam name="idturma" value="#{albumMb.turmaId}" /> -->
+<!-- 	<f:event listener="#{albumMb.load}" type="preRenderView" /> -->
+<!-- </f:metadata> -->
+
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title><ui:insert name="title">Turma</ui:insert></title>
+	<h:outputStylesheet name="/css/bootstrap.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet"
+		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script
+		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+</h:head>
+<h:body>
+	<div class="container">
+		<div class="header clearfix">
+			<nav>
+			<ul class="nav nav-pills pull-right">
+				<li role="presentation" class="active"><a href="index.html">Home</a></li>
+				<li role="presentation"><a href="aluno.xhtml">Aluno</a></li>
+				<li role="presentation"><a href="professor.xhtml">Professor</a></li>
+				<li role="presentation"><a href="admListagem.xhtml">Administrador</a></li>
+			</ul>
+			</nav>
+			<h3 class="text-muted">Escola Aprenda brincando</h3>
+		</div>
+		<div class="col-md-3 col-md-offset-0">
+			<h1>
+				Listar <small> Turma </small>
+			</h1>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="container-fluid">
+			<div class="col-md-1 col-md-offset-3"></div>
+			<div>
+				<b>Professor: </b>
+				<h:outputText value="#{albumMb.escursao.destino}" />
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="container-fluid">
+			<div class="col-md-1 col-md-offset-3"></div>
+			<div>
+				<b>Data inicio: </b>
+				<h:outputText value="#{albumMb.escursao.partida}">
+					<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+				</h:outputText>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="container-fluid">
+			<div class="col-md-1 col-md-offset-3"></div>
+			<div>
+				<b>Data Termino: </b>
+				<h:outputText value="#{albumMb.escursao.partida}">
+					<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+				</h:outputText>
+			</div>
+		</div>
+	</div>
+
+
+	<!--/.container-->
+
+	<h:outputScript name="/jquery.min.js" />
+	<h:outputScript name="/menu.js" />
+	<h:outputScript name="/bootstrap/js/bootstrap.js" />
+	<h:outputScript name="/bootstrap/template/offcanvas.js" />
+</h:body>
+</html>
