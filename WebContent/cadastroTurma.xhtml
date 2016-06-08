@@ -24,7 +24,11 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title><ui:insert name="title">Cadastro de turma </ui:insert></title>
-
+	<f:metadata>
+		<f:viewParam name="id" value="#{turmaMb.editarId}" />
+	<f:event listener="#{turmaMb.carregarEdicao}" type="preRenderView" />
+	</f:metadata>
+	
 
 </h:head>
 <h:body>
