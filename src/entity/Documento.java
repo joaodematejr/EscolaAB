@@ -12,12 +12,8 @@ public class Documento {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String professor;
-	private Date dataPostagem;
-	private Date dataEntrega;
-	private String comentario;
-	private String assunto;
-	private String nomeDocumento;
+	private String nome;
+	private Date data;
 	@ManyToOne
 	private Turma turma;
 
@@ -29,52 +25,20 @@ public class Documento {
 		this.id = id;
 	}
 
-	public String getProfessor() {
-		return professor;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setProfessor(String professor) {
-		this.professor = professor;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public Date getDataPostagem() {
-		return dataPostagem;
+	public Date getData() {
+		return data;
 	}
 
-	public void setDataPostagem(Date dataPostagem) {
-		this.dataPostagem = dataPostagem;
-	}
-
-	public Date getDataEntrega() {
-		return dataEntrega;
-	}
-
-	public void setDataEntrega(Date dataEntrega) {
-		this.dataEntrega = dataEntrega;
-	}
-
-	public String getComentario() {
-		return comentario;
-	}
-
-	public void setComentario(String comentario) {
-		this.comentario = comentario;
-	}
-
-	public String getAssunto() {
-		return assunto;
-	}
-
-	public void setAssunto(String assunto) {
-		this.assunto = assunto;
-	}
-
-	public String getNomeDocumento() {
-		return nomeDocumento;
-	}
-
-	public void setNomeDocumento(String nomeDocumento) {
-		this.nomeDocumento = nomeDocumento;
+	public void setData(Date data) {
+		this.data = data;
 	}
 
 	public Turma getTurma() {
@@ -85,4 +49,20 @@ public class Documento {
 		this.turma = turma;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Documento other = (Documento) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
 }

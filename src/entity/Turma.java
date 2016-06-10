@@ -13,6 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import entity.Turma;
+import entity.Cliente;
 
 @Entity
 public class Turma {

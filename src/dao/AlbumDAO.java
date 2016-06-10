@@ -1,17 +1,19 @@
 package dao;
 
 import java.util.List;
+
 import javax.persistence.Query;
+
 import entity.Documento;
 
-public class ArquivoDAO extends DAO {
+public class AlbumDAO extends DAO {
 
-	public void salvar(Documento doc) {
-		getEM().merge(doc);
+	public void salvar(Documento foto) {
+		getEM().merge(foto);
 	}
 
 	public List<Documento> listarDocumentoPorTurma(Long idTurma) {
-		Query query = getEM().createQuery("From Documento i where i .turma.id = : idTurma", Documento.class);
+		Query query = getEM().createQuery("From Documento i Where i.turma.id = :idTurma ", Documento.class);
 		query.setParameter("idTurma", idTurma);
 		return query.getResultList();
 	}
@@ -22,7 +24,8 @@ public class ArquivoDAO extends DAO {
 
 	public void excluir(Documento documento) {
 		getEM().remove(documento);
-
 	}
+
+	
 
 }
