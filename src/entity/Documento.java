@@ -1,8 +1,12 @@
 package entity;
 
 import java.util.Date;
-
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -14,6 +18,7 @@ public class Documento {
 	private Long id;
 	private String nome;
 	private Date data;
+	private String comentario;
 	@ManyToOne
 	private Turma turma;
 
@@ -65,4 +70,15 @@ public class Documento {
 			return false;
 		return true;
 	}
+
+	public String getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
+	}
+
+
+
 }

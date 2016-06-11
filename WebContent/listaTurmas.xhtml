@@ -24,10 +24,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title><ui:insert name="title">listar turma</ui:insert></title>
-	
+
 	<f:metadata>
 		<f:viewParam name="id" value="#{turmaMb.editarId}" />
-	<f:event listener="#{turmaMb.carregarEdicao}" type="preRenderView" />
+		<f:event listener="#{turmaMb.carregarEdicao}" type="preRenderView" />
 	</f:metadata>
 
 
@@ -56,52 +56,54 @@
 				<span class="glyphicon glyphicon-plus"></span>
 			</h:link>
 			<h:messages />
-			<table class="table table-hover">
-			<h:form>
-				<h:dataTable styleClass="table" value="#{turmaMb.listaTurma}"
-					var="turma">
-					<h:column>
-						<f:facet name="header">ID</f:facet>
-						<h:outputText value="#{turma.id}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Professor</f:facet>
-						<h:outputText value="#{turma.professor.nome}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Data inicio</f:facet>
-						<h:outputText value="#{turma.inicio}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Data Termino</f:facet>
-						<h:outputText value="#{turma.inicio}" />
-					</h:column>
 
-					<h:column>
-						<span> <h:link styleClass="btn btn-default"
-								outcome="/arquivos">
-								<span class="glyphicon glyphicon-picture"></span>
-								<f:param name="idturma" value="#{turma.id}" />
-							</h:link>
-						</span>
-						<span> <h:link styleClass="btn btn-default"
-								outcome="/cadastroTurma">
-								<span class="glyphicon glyphicon-pencil"></span>
-								<f:param name="id" value="#{turma.id}" />
-							</h:link>
-						</span>
-						<span> <h:commandLink styleClass="btn btn-warning"
-								action="#{turmaMb.excluir(turma.id)}"
-								onclick="return confirm('Tem certeza da exclusão da Turma')">
-								<span class="glyphicon glyphicon-trash"></span>
-							</h:commandLink>
-						</span>
-					</h:column>
-				</h:dataTable>
+			<h:form>
+				<table styleClass="table table table-hover">
+					<h:dataTable styleClass="table" value="#{turmaMb.listaTurma}"
+						var="turma">
+						<h:column>
+							<f:facet name="header">Id Turma</f:facet>
+							<h:outputText value="#{turma.id}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Professor</f:facet>
+							<h:outputText value="#{turma.professor.nome}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Data inicio</f:facet>
+							<h:outputText value="#{turma.inicio}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Data Termino</f:facet>
+							<h:outputText value="#{turma.inicio}" />
+						</h:column>
+
+						<h:column>
+							<span> <h:link styleClass="btn btn-default"
+									outcome="/arquivos">
+									<span class="glyphicon glyphicon-picture"></span>
+									<f:param name="idturma" value="#{turma.id}" />
+								</h:link>
+							</span>
+							<span> <h:link styleClass="btn btn-default"
+									outcome="/cadastroTurma">
+									<span class="glyphicon glyphicon-pencil"></span>
+									<f:param name="id" value="#{turma.id}" />
+								</h:link>
+							</span>
+							<span> <h:commandLink styleClass="btn btn-warning"
+									action="#{turmaMb.excluir(turma.id)}"
+									onclick="return confirm('Tem certeza da exclusão da Turma')">
+									<span class="glyphicon glyphicon-trash"></span>
+								</h:commandLink>
+							</span>
+						</h:column>
+					</h:dataTable>
+				</table>
 			</h:form>
-			</table>
+
 		</div>
-		
+
 
 
 

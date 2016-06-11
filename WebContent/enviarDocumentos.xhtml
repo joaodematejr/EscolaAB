@@ -26,6 +26,13 @@
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
 	<h:outputStylesheet name="/css/bootstrap.css" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<h:outputScript name="/libs/jquery.min.js" />
+	<h:outputScript name="/libs/moment-with-locales.js" />
+	<h:outputScript name="/js/menu.js" />
+	<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
+	<h:outputScript
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+	<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
 </h:head>
 <h:body>
 	<div class="container">
@@ -59,6 +66,23 @@
 			<h:inputHidden value="#{albumMb.foto.id}" />
 			<h:inputHidden value="#{albumMb.foto.nome}" />
 			<h:inputHidden value="#{albumMb.turma}" />
+
+			<div class="form-group">
+				<label>Data para Entrega</label>
+				<div class='input-group date datetimepicker'>
+					<h:inputText styleClass="form-control" value="#{albumMb.foto.data}">
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+					</h:inputText>
+					<span class="input-group-addon"> <span
+						class="glyphicon glyphicon-calendar"></span>
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputNome">Comentario</label>
+				<h:inputText styleClass="form-control"
+					value="#{albumMb.foto.comentario}" id="exampleInputCpf" />
+			</div>
 			<div class="form-group">
 				<label>Foto</label>
 				<h:inputFile styleClass="form-control"
@@ -68,19 +92,18 @@
 				styleClass="img-responsive" name="img/uploads/#{albumMb.foto.nome}" />
 			<div>
 				<h:commandButton styleClass="btn btn-success"
-					action="#{albumMb.salvar}" value="Salvarr" />
+					action="#{albumMb.salvar}" value="Salvar" />
+				<button type="reset" class="btn btn-danger">Limpar</button>
 			</div>
 		</h:form>
+		<h:outputScript name="/js/datepicker-component.js" />
 
 	</div>
-	<h:outputScript name="/jquery.min.js" />
-	<h:outputScript name="/menu.js" />
-	<h:outputScript name="/bootstrap/js/bootstrap.js" />
-	<h:outputScript name="/bootstrap/template/offcanvas.js" />
-	<h:outputScript name="/js/datepicker-component.js" />
-	<h:outputScript name="/libs/moment-with-locales.js" />
-	<h:outputScript name="/js/menu.js" />
-	<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
+	<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
+	<h:outputStylesheet name="/libs/bootstrap/css/bootstrap.css" />
+	<h:outputStylesheet
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.css" />
+	<h:outputStylesheet name="/libs/bootstrap/template/offcanvas.css" />
 
 </h:body>
 </html>
