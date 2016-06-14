@@ -2,6 +2,6 @@ package entity;
 
 public enum Modalidade {
 	
-	ACERTOOUERRO, MULTIPAESCOLA
+	ACERTOOUERRO, MULTIPLAESCOLHA
 
 }

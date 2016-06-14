@@ -2,6 +2,6 @@ package entity;
 
 public enum Dificudade {
 	
-		MUITOFACIL, MEDIO, MUITODIFICIL, DIFICIL, PROFESSOR
+		MUITOFACIL, MEDIO, MUITODIFICIL, DIFICIL
 
 }

@@ -31,8 +31,8 @@
 
 <h:body>
 	<f:metadata>
-		<f:viewParam name="id" value="#{clienteMb.editarId}" />
-		<f:event listener="#{clienteMb.carregarEdicao}" type="preRenderView" />
+		<f:viewParam name="id" value="#{questaoMb.editarId}" />
+		<f:event listener="#{questaoMb.carregarEdicao}" type="preRenderView" />
 	</f:metadata>
 	<div class="container">
 		<div class="header clearfix">
@@ -54,105 +54,107 @@
 		<h:form>
 			<div>
 				<div class="col-md-4 ">
-					<h:panelGroup rendered="#{not empty questaoMb.questao.id}">
+					<h:panelGroup rendered="#{not empty QuestaoMb.questao.id}">
 						<div class="form-group id">
 							<label for="exampleId">ID</label>
 							<h:inputText styleClass="form-control" readonly="true"
 								value="#{QuestaoMb.questao.id}" id="exampleId" />
 						</div>
 					</h:panelGroup>
-					<h:inputHidden value="#questaoMB.questao.id}" />
+					<h:inputHidden value="#questaoMb.questao.id}" />
 
+					
 					<div class="form-group">
-						<label for="exampleInputPerfil">Professor</label> <label></label>
-						<h:selectOneMenu styleClass="form-control"
-							value="#{questaoMb.questao.professor}">
-								<f:selectItem itemLabel="Professor" itemValue="Professor" />
-							<f:selectItem itemLabel="-" />
-							<f:selectItems value="#{ClienteMb.listacliente}" var="cli"
-								itemLabel="#{cli.nome}" itemValue="#{cli}" />
-						</h:selectOneMenu>
-					</div>
-					<div class="form-group">
-						<label for="exampleInputPerfil">Dificudade</label> <label
-							for="exampleInputPerfil">Questao</label>
-						<h:selectOneMenu styleClass="form-control"
-							value="#{clienteMb.cliente.perfil}">
-							<f:selectItem itemLabel="-" itemValue="" />
-							<f:selectItem itemLabel="Muito Fácil" itemValue="ADMIN" />
-							<f:selectItem itemLabel="Fácil" itemValue="ALUNO" />
-							<f:selectItem itemLabel="Médio" itemValue="PROFESSOR" />
-							<f:selectItem itemLabel="Difícil" itemValue="DIRETOR" />
-							<f:selectItem itemLabel="Muito Difícil" itemValue="DIRETOR" />
-						</h:selectOneMenu>
-					</div>
-					<div class="form-group">
-						<label for="exampleInputPerfil">Modalidade</label> <label
-							for="exampleInputPerfil">Questao</label>
-						<h:selectOneMenu styleClass="form-control"
-							value="#{clienteMb.cliente.perfil}">
-							<f:selectItem itemLabel="-" itemValue="" />
-							<f:selectItem itemLabel="Certo ou Errado" itemValue="ADMIN" />
-							<f:selectItem itemLabel="Múltipla-Escola" itemValue="ALUNO" />
-						</h:selectOneMenu>
-					</div>
-					<div class="form-group">
-						<label>Data da pergunta</label>
+					<label for="exampleInputPerfil">Professor</label> <label
+						for="exampleInputPerfil"></label>
+
+					<h:selectOneMenu styleClass="form-control"
+						value="#{questaoMb.questao.perfil}">
+						<f:selectItem itemLabel="Professor" itemValue="PROFESSOR" />
+					</h:selectOneMenu>
+
+				</div>
+				
+				<div>		
+							<div class="form-group">
+								<label for="exampleInputnmProfessor">Nome do Professor</label>
+								<h:inputText styleClass="form-control"
+									value="#{questaoMb.questao.nmProfessor}" id="exampleInputnmProfessor" />
+							</div>
+							
+							
+							<div class="form-group">
+								<label for="exampleInputResposta">Assunto</label>
+								<h:inputText styleClass="form-control"
+									value="#{questaoMb.questao.assunto}" id="exampleInputAssunto" />
+							</div>
+							
+							<div class="form-group">
+						<label>Data da Pergunta</label>
 						<div class='input-group date datetimepicker'>
 							<h:inputText styleClass="form-control"
-								value="#{QuestaoMb.questao.nascimento}">
+								value="#{questaoMb.questao.dtPergunta}">
 								<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
 							</h:inputText>
 							<span class="input-group-addon"><span
 								class="glyphicon glyphicon-calendar"></span> </span>
 						</div>
 					</div>
-				</div>
-				<div>
-
-					<div class="col-md-4">
-						<div>
+						
+								<div class="form-group">
+					<label for="exampleInputModalidade">Dificudade da questão</label> 
+							
+						<h:selectOneMenu styleClass="form-control"
+							value="#{questaoMb.questao.dificudade}">
+							<f:selectItem itemLabel="-" itemValue="" />
+							<f:selectItem itemLabel="Muito Facil" itemValue="MUITOFACIL" />
+							<f:selectItem itemLabel="Medio" itemValue="MEDIO" />
+							<f:selectItem itemLabel="Muito Dificil" itemValue="MUITODIFICIL" />
+							<f:selectItem itemLabel="Dificil" itemValue="DIFICIL" />
+						</h:selectOneMenu>
+					</div>
+						
+						
 							<div class="form-group">
-								<label for="exampleInputNumero">Assunto</label>
+					<label for="exampleInputModalidade">Modalidade da questão</label> 
+							
+						<h:selectOneMenu styleClass="form-control"
+							value="#{questaoMb.questao.modalidade}">
+							<f:selectItem itemLabel="-" itemValue="" />
+							<f:selectItem itemLabel="Acerto ou Erro" itemValue="ACERTOOUERRO" />
+							<f:selectItem itemLabel="Multipla Escolha" itemValue="MULTIPLAESCOLHA" />
+						
+						</h:selectOneMenu>
+					</div>
+							
+							<div class="form-group">
+								<label for="exampleInputPergunta">Pergunta</label>
 								<h:inputText styleClass="form-control"
-									value="#{questaoMb.questao.assunto}" id="exampleInputNumero" />
+									value="#{questaoMb.questao.pergunta}" id="exampleInputPergunta" />
 							</div>
 							<div class="form-group">
-								<label for="exampleInputComplemento">Pergunta</label>
+								<label for="exampleInputResposta">Resposta</label>
 								<h:inputText styleClass="form-control"
-									value="#{questaoMb.questao.pergunta}"
-									id="exampleInputComplemento" />
+									value="#{questaoMb.questao.resposta}" id="exampleInputResposta" />
 							</div>
+							
 							<div class="form-group">
-								<label for="exampleInputComplemento">Resposta</label>
+								<label for="exampleInputComentario">Comentario</label>
 								<h:inputText styleClass="form-control"
-									value="#{questaoMb.questao.resposta}" id="exampleInputBairro" />
+									value="#{questaoMb.questao.comentario}" id="exampleInputComentario" />
 							</div>
-							<div class="form-group">
-								<label for="exampleInputComplemento">Comentario</label>
-								<h:inputText styleClass="form-control"
-									value="#{questaoMb.questao.comentario}" id="exampleInputCidade" />
-							</div>
-
+							
 							<button type="reset" class="btn btn-danger">Limpar</button>
 							<h:commandButton styleClass="btn btn-success"
 								onclick="redirecionar();" action="#{questaoMb.salvar}"
 								value="Salvar" />
 						</div>
 					</div>
-
-
-				</div>
-			</div>
-
+</div>
 		</h:form>
 
 
 	</div>
-
-
-
-
 
 
 	<!--/.container-->
