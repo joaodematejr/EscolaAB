@@ -25,7 +25,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title><ui:insert name="title">Cadastro de questoes </ui:insert></title>
 
-
+		<f:metadata>
+		<f:viewParam name="id" value="#{questaoMb.editarId}" />
+	<f:event listener="#{questaoMb.carregarEdicao}" type="preRenderView" />
+	</f:metadata>
+	
 
 </h:head>
 
