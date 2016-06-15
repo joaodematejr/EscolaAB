@@ -1,6 +1,7 @@
 package entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,8 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import entity.Questao;
 
@@ -28,16 +31,10 @@ public class Questao {
 	private String assunto;
 	private Date dtPergunta;
 	private String comentario;
-	private String nmProfessor;
 	
-	public String getNmProfessor() {
-		return nmProfessor;
-	}
 
-	public void setNmProfessor(String nmProfessor) {
-		this.nmProfessor = nmProfessor;
-	}
 
+	
 	public String getComentario() {
 		return comentario;
 	}

@@ -43,14 +43,43 @@
 						<f:facet name="header">ID</f:facet>
 						<h:outputText value="#{questao.id}" />
 					</h:column>
-					<h:column>
-						<f:facet name="header">Nome do Professor</f:facet>
-						<h:outputText value="#{questao.nmProfessor}" />
-					</h:column>
+					
+
 					<h:column>
 						<f:facet name="header">Assunto</f:facet>
 						<h:outputText value="#{questao.assunto}" />
 					</h:column>
+					
+							<h:column>
+							<f:facet name="header">Data  da  Pergunta</f:facet>
+							<h:outputText value="#{questao.dtPergunta}" />
+						</h:column>
+					
+						<h:column>
+						<f:facet name="header">Dificudade da Questão</f:facet>
+						<h:outputText value="#{questao.dificudade}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header"> Modalidade da Quetão</f:facet>
+						<h:outputText value="#{questao.modalidade}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">Pergunta</f:facet>
+						<h:outputText value="#{questao.pergunta}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">Resposta</f:facet>
+						<h:outputText value="#{questao.resposta}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">Comnetario</f:facet>
+						<h:outputText value="#{questao.comentario}" />
+					</h:column>
+					
 					<h:column>
 						<f:facet name="header">Açoes</f:facet>
 						<h:link styleClass="btn btn-default" outcome="/cadastroQuestoes"
@@ -58,7 +87,7 @@
 							<f:param name="id" value="#{questao.id}" />
 						</h:link>
 						<h:commandLink
-							onclick=" return confirm('Tem certeza da exclusão da questao #{questao.nmProfessor}');"
+							onclick=" return confirm('Tem certeza da exclusão da questao ');"
 							styleClass="btn btn-danger"
 							action="#{questaoMb.excluir(questao.id)}" value="Excluir" />
 					</h:column>

@@ -1,10 +1,12 @@
 package rn;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import dao.QuestaoDAO;
-import entity.Cliente;
+
 import entity.Questao;
+
 
 public class QuestaoRN {
 	private QuestaoDAO dao;
@@ -25,7 +27,10 @@ public class QuestaoRN {
 		dao.excluir(id);
 	}
 	
-	public Questao buscarPorId(Long id) {
+	
+		
+		public Questao buscarPorId(Long id) {
+	
 		return dao.buscarPorId(id);
 	}
 

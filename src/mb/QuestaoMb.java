@@ -19,6 +19,8 @@ import javax.faces.event.ComponentSystemEvent;
 
 
 
+
+
 import entity.Cliente;
 import entity. Questao;
 import rn. QuestaoRN;
@@ -36,11 +38,13 @@ public class QuestaoMb {
 	public void depoisDeConstruir() {
 		questao = new Questao();
 		questaoRN = new QuestaoRN();
+		
 	}
 	
-	
-	
-	
+
+
+
+
 
 	public List<Questao> getListaQuestoes() {
 		if (listaQuestoes == null) {
@@ -49,7 +53,7 @@ public class QuestaoMb {
 		return listaQuestoes;
 	}
 
-	public void setListaQuestaoes(List<Questao> listaQuestoes) {
+	public void setListaQuestoes(List<Questao> listaQuestoes) {
 		this.listaQuestoes = listaQuestoes;
 	}
 
@@ -92,6 +96,9 @@ public class QuestaoMb {
 		return "index.html";
 	}
 
+
+
+
 	public String salvar() {
 		questaoRN.salvar(questao);
 		listaQuestoes = null;
@@ -106,3 +113,4 @@ public class QuestaoMb {
 	}
 
 }
+

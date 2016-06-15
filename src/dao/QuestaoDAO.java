@@ -6,9 +6,11 @@ import javax.persistence.Query;
 
 
 
+
 import entity.Cliente;
 import entity.Perfil;
 import entity.Questao;
+import entity.Turma;
 
 public class QuestaoDAO extends DAO {// METODO PUBLIC
 	public void salvar(Questao questao) {// MEDOTO QUE SALVA E RETORNA UM VALOR
@@ -23,10 +25,12 @@ public class QuestaoDAO extends DAO {// METODO PUBLIC
 	public List<Questao> listarQuestoes() {
 		Query query = getEM().createQuery("From Questao u Where u.perfil = :perfil", Questao.class);
 		query.setParameter("perfil", Perfil.PROFESSOR);
-
+		
+		
 		return query.getResultList();
+		
+	
 	}
-
 	
 
 	public void excluir(Long id) {// METODO PUBLIC, DELETAR QUESTAO
