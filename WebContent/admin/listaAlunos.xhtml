@@ -10,7 +10,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title><ui:insert name="title">Cadastro</ui:insert></title>
+	<title><ui:insert name="title">Alunos Matriculados</ui:insert></title>
 	<h:outputStylesheet name="/css/bootstrap.css" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
 </h:head>
@@ -20,27 +20,25 @@
 		<div class="header clearfix">
 			<nav>
 			<ul class="nav nav-pills pull-right">
-					<li role="presentation" class="active"><a href="index.html">Home</a></li>
-					<li role="presentation"><a href="aluno.xhtml">Aluno</a></li>
-					<li role="presentation"><a href="professor.xhtml">Professor</a></li>
-					<li role="presentation"><a href="admListagem.xhtml">Administrador</a></li>
-				</ul>
+				<li role="presentation" class="active"><a href="../index.html">Home</a></li>
+				<li role="presentation"><a href="admListagem.xhtml">Administrador</a></li>
+			</ul>
 			</nav>
 			<h3 class="text-muted">Escola Aprenda brincando</h3>
 		</div>
 		<div class="page-header">
 			<h1>
-				Clientes <small>Cadastrados</small>
+				Alunos <small>Matriculado</small>
 			</h1>
 		</div>
 
 		<div class="col-md-9 col-md-9">
 			<h:form>
-				<h:dataTable value="#{clienteMb.listaClientes}" var="user"
+				<h:dataTable value="#{clienteMb.listaAlunos}" var="user"
 					styleClass="table table table-hover">
 					<f:facet name="header">Listagem</f:facet>
 					<h:column>
-						<f:facet name="header">ID</f:facet>
+						<f:facet name="header">Id Aluno</f:facet>
 						<h:outputText value="#{user.id}" />
 					</h:column>
 					<h:column>
@@ -48,24 +46,23 @@
 						<h:outputText value="#{user.nome}" />
 					</h:column>
 					<h:column>
-						<f:facet name="header">Cargo</f:facet>
-						<h:outputText value="#{user.perfil}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">Açoes</f:facet>
-						<h:link styleClass="btn btn-default" outcome="/clientes"
-							value="Editar" onclick="redirecionar();">
-							<f:param name="id" value="#{user.id}" />
-						</h:link>
-						<h:commandLink
-							onclick=" return confirm('Tem certeza da exclusão um cliente #{user.nome}');"
-							styleClass="btn btn-danger"
-							action="#{clienteMb.excluir(user.id)}" value="Excluir" />
+						<label class="checkbox-inline"> <input type="radio"
+							name="inlineRadioOptions" id="inlineRadio1" value="option1" />
+							Ausente
+						</label>
+						<label class="checkbox-inline"> <input type="radio"
+							name="inlineRadioOptions" id="inlineRadio1" value="option1" />
+							Presente
+						</label>
 					</h:column>
 				</h:dataTable>
 			</h:form>
 		</div>
 	</div>
+
 	<!--/.container-->
 
 	<h:outputScript name="/jquery.min.js" />

@@ -2,6 +2,7 @@ package entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -31,6 +32,7 @@ public class Cliente {
 	private String bairro;
 	private String cidade;
 	private String telefone;
+	@Column(unique=true)
 	private String email;
 	private String senha;
 

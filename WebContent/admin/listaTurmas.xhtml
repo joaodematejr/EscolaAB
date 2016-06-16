@@ -26,9 +26,9 @@
 	<title><ui:insert name="title">listar turma</ui:insert></title>
 
 	<f:metadata>
-		<f:viewParam name="id" value="#{turmaMb.editarId}" />
-		<f:event listener="#{turmaMb.carregarEdicao}" type="preRenderView" />
-	</f:metadata>
+ +		<f:viewParam name="id" value="#{turmaMb.editarId}" />
+ +	<f:event listener="#{turmaMb.carregarEdicao}" type="preRenderView" />
+ +	</f:metadata>
 
 
 </h:head>
@@ -42,9 +42,7 @@
 		<div class="header clearfix">
 			<nav>
 			<ul class="nav nav-pills pull-right">
-				<li role="presentation" class="active"><a href="index.html">Home</a></li>
-				<li role="presentation"><a href="aluno.xhtml">Aluno</a></li>
-				<li role="presentation"><a href="professor.xhtml">Professor</a></li>
+				<li role="presentation" class="active"><a href="../index.html">Home</a></li>
 				<li role="presentation"><a href="admListagem.xhtml">Administrador</a></li>
 			</ul>
 			</nav>
@@ -52,7 +50,7 @@
 		</div>
 		<div class="page-header">
 			<h1>Turmas</h1>
-			<h:link outcome="/turma" styleClass="btn btn-success">
+			<h:link outcome="cadastroTurma" styleClass="btn btn-success">
 				<span class="glyphicon glyphicon-plus"></span>
 			</h:link>
 			<h:messages />
@@ -80,13 +78,13 @@
 
 						<h:column>
 							<span> <h:link styleClass="btn btn-default"
-									outcome="/arquivos">
+									outcome="arquivos">
 									<span class="glyphicon glyphicon-picture"></span>
 									<f:param name="idturma" value="#{turma.id}" />
 								</h:link>
 							</span>
 							<span> <h:link styleClass="btn btn-default"
-									outcome="/cadastroTurma">
+									outcome="cadastroTurma">
 									<span class="glyphicon glyphicon-pencil"></span>
 									<f:param name="id" value="#{turma.id}" />
 								</h:link>

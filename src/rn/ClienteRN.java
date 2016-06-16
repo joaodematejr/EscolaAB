@@ -34,6 +34,10 @@ public class ClienteRN {
 
 	public List<Cliente> listarAlunos() {
 		return dao.listarAlunos();
+	}	
+	
+	public Cliente buscarPorEmail(String email) {
+		return dao.buscarPorEmail(email);
 	}
 
 }

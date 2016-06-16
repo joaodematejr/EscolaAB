@@ -2,7 +2,9 @@ package dao;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;//ACESSAR O PERSISTENCE
+
 import entity.Perfil;//ACESSAR A CLASSE PERFIL
 import entity.Estado;//ACESSAR A CLASSE ESTADO
 import entity.Sexo;//ACESSAR A CLASSE SEXO
@@ -39,5 +41,16 @@ public class ClienteDAO extends DAO {// METODO PUBLIC
 		query.setParameter("perfil", Perfil.ALUNO);
 
 		return query.getResultList();
+	}
+	public Cliente buscarPorEmail(String email) {
+		Query query = getEM().createQuery(
+				"From Cliente u Where u.email = :email", Cliente.class);
+		query.setParameter("email", email);
+		
+		try {
+			return (Cliente) query.getSingleResult();
+		} catch (NoResultException exceptio) {
+			return null;
+		}
 	}
 }

@@ -24,10 +24,11 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title><ui:insert name="title">Cadastro de turma </ui:insert></title>
+
 	<f:metadata>
-		<f:viewParam name="id" value="#{turmaMb.editarId}" />
-	<f:event listener="#{turmaMb.carregarEdicao}" type="preRenderView" />
-	</f:metadata>
+ +		<f:viewParam name="id" value="#{turmaMb.editarId}" />
+ +	<f:event listener="#{turmaMb.carregarEdicao}" type="preRenderView" />
+ +	</f:metadata>
 	
 
 </h:head>
@@ -37,9 +38,7 @@
 		<div class="header clearfix">
 			<nav>
 		<ul class="nav nav-pills pull-right">
-					<li role="presentation" class="active"><a href="index.html">Home</a></li>
-					<li role="presentation"><a href="aluno.xhtml">Aluno</a></li>
-					<li role="presentation"><a href="professor.xhtml">Professor</a></li>
+				<li role="presentation" class="active"><a href="../index.html">Home</a></li>
 					<li role="presentation"><a href="admListagem.xhtml">Administrador</a></li>
 				</ul>
 			</nav>
@@ -87,6 +86,7 @@
 						<h:inputText styleClass="form-control"
 							value="#{turmaMb.turma.inicio}">
 							<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+							
 						</h:inputText>
 						<span class="input-group-addon"><span
 							class="glyphicon glyphicon-calendar"></span> </span>
