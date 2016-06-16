@@ -26,9 +26,9 @@
 	<title><ui:insert name="title">listar turma</ui:insert></title>
 
 	<f:metadata>
- +		<f:viewParam name="id" value="#{turmaMb.editarId}" />
- +	<f:event listener="#{turmaMb.carregarEdicao}" type="preRenderView" />
- +	</f:metadata>
+		<f:viewParam name="id" value="#{turmaMb.editarId}" />
+		<f:event listener="#{turmaMb.carregarEdicao}" type="preRenderView" />
+	</f:metadata>
 
 
 </h:head>
@@ -42,65 +42,54 @@
 		<div class="header clearfix">
 			<nav>
 			<ul class="nav nav-pills pull-right">
-				<li role="presentation" class="active"><a href="../index.html">Home</a></li>
-				<li role="presentation"><a href="admListagem.xhtml">Administrador</a></li>
+				<li role="presentation" class="active"><a href="index.html">Home</a></li>
 			</ul>
 			</nav>
 			<h3 class="text-muted">Escola Aprenda brincando</h3>
 		</div>
 		<div class="page-header">
-			<h1>Turmas</h1>
-			<h:link outcome="cadastroTurma" styleClass="btn btn-success">
-				<span class="glyphicon glyphicon-plus"></span>
-			</h:link>
+			<h1>Login</h1>
+			
 			<h:messages />
 
+			<div class="col-sm-8">
+			<h:panelGroup rendered="#{not empty param.msg}">
+				<div class="alert alert-danger">
+					<h:outputText value="#{param.msg}" />
+				</div>
+			</h:panelGroup>
+			<h:messages styleClass="alert alert-warning"></h:messages>
 			<h:form>
-				<table styleClass="table table table-hover">
-					<h:dataTable styleClass="table" value="#{turmaMb.listaTurma}"
-						var="turma">
-						<h:column>
-							<f:facet name="header">Id Turma</f:facet>
-							<h:outputText value="#{turma.id}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">Professor</f:facet>
-							<h:outputText value="#{turma.professor.nome}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">Data inicio</f:facet>
-							<h:outputText value="#{turma.inicio}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">Data Termino</f:facet>
-							<h:outputText value="#{turma.termino}" />
-						</h:column>
-
-						<h:column>
-							<span> <h:link styleClass="btn btn-default"
-									outcome="arquivos">
-									<span class="glyphicon glyphicon-picture"></span>
-									<f:param name="idturma" value="#{turma.id}" />
-								</h:link>
-							</span>
-							<span> <h:link styleClass="btn btn-default"
-									outcome="cadastroTurma">
-									<span class="glyphicon glyphicon-pencil"></span>
-									<f:param name="id" value="#{turma.id}" />
-								</h:link>
-							</span>
-							<span> <h:commandLink styleClass="btn btn-warning"
-									action="#{turmaMb.excluir(turma.id)}"
-									onclick="return confirm('Tem certeza da exclusão da Turma')">
-									<span class="glyphicon glyphicon-trash"></span>
-								</h:commandLink>
-							</span>
-						</h:column>
-					</h:dataTable>
-				</table>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+					<div class="col-sm-10">
+						<h:inputText styleClass="form-control" id="inputEmail3"
+							value="#{sessaoMB.emailForm}">
+							<f:passThroughAttribute name="placeholder" value="E-mail" />
+						</h:inputText>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputPassword3" class="col-sm-2 control-label">Senha</label>
+					<div class="col-sm-10">
+						<h:inputSecret styleClass="form-control" id="inputPassword3"
+							value="#{sessaoMB.senhaForm}">
+							<f:passThroughAttribute name="placeholder" value="Senha" />
+						</h:inputSecret>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-5">
+						<h:commandButton styleClass="btn btn-success" value="Entrar"
+							action="#{sessaoMB.entrar}" />
+						<button type="reset" class="btn btn-default">Restaurar</button>
+					</div>
+				</div>
 			</h:form>
+		</div>
 
 		</div>
+		
 
 
 

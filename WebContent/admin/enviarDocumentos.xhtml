@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<f:metadata>
+	<f:viewParam name="idturma" value="#{albumMb.turma}" required="true"
+		requiredMessage="Clique no botão adicionar do album de uma turma" />
+	<f:viewParam name="idimagem" value="#{albumMb.foto}" />
+</f:metadata>
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title><ui:insert name="title">Enviar documento</ui:insert></title>
+	<h:outputStylesheet name="/css/bootstrap.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet"
+		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script
+		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<h:outputStylesheet name="/css/bootstrap.css" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<h:outputScript name="/libs/jquery.min.js" />
+	<h:outputScript name="/libs/moment-with-locales.js" />
+	<h:outputScript name="/js/menu.js" />
+	<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
+	<h:outputScript
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+	<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
+</h:head>
+<h:body>
+	<div class="container">
+		<div class="header clearfix">
+			<nav>
+			<ul class="nav nav-pills pull-right">
+				<li role="presentation" class="active"><a href="../index.html">Home</a></li>
+					<li role="presentation"><a href="admListagem.xhtml">Administrador</a></li>
+
+			</ul>
+			</nav>
+			<h3 class="text-muted">Escola Aprenda brincando</h3>
+		</div>
+		<div class="col-md-3 col-md-offset-0">
+			<h1>
+				Enviar <small> documento </small>
+			</h1>
+		</div>
+	</div>
+	<div class="col-md-1"></div>
+	<div class="col-md-4">
+		<h:form enctype="multipart/form-data">
+			<h:panelGroup rendered="#{not empty albumMb.foto.id}">
+				<div class="form-group id">
+					<label>ID</label>
+					<h:inputText styleClass="form-control" readonly="true"
+						value="#{albumMb.foto.id}" />
+				</div>
+			</h:panelGroup>
+			<h:inputHidden value="#{albumMb.foto.id}" />
+			<h:inputHidden value="#{albumMb.foto.nome}" />
+			<h:inputHidden value="#{albumMb.turma}" />
+
+			<div class="form-group">
+				<label>Data para Entrega</label>
+				<div class='input-group date datetimepicker'>
+					<h:inputText styleClass="form-control" value="#{albumMb.foto.data}">
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+					</h:inputText>
+					<span class="input-group-addon"> <span
+						class="glyphicon glyphicon-calendar"></span>
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputNome">Comentario</label>
+				<h:inputText styleClass="form-control"
+					value="#{albumMb.foto.comentario}" id="exampleInputCpf" />
+			</div>
+			<div class="form-group">
+				<label>Foto</label>
+				<h:inputFile styleClass="form-control"
+					value="#{albumMb.fotoUploaded}" />
+			</div>
+			<h:graphicImage rendered="#{not empty albumMb.foto.nome}"
+				styleClass="img-responsive" name="img/uploads/#{albumMb.foto.nome}" />
+			<div>
+				<h:commandButton styleClass="btn btn-success"
+					action="#{albumMb.salvar}" value="Salvar" />
+				<button type="reset" class="btn btn-danger">Limpar</button>
+			</div>
+		</h:form>
+		<h:outputScript name="/js/datepicker-component.js" />
+
+	</div>
+	<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
+	<h:outputStylesheet name="/libs/bootstrap/css/bootstrap.css" />
+	<h:outputStylesheet
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.css" />
+	<h:outputStylesheet name="/libs/bootstrap/template/offcanvas.css" />
+
+</h:body>
+</html>
