@@ -11,24 +11,16 @@
 <h:outputScript
 	name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
 <h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
-
-<script type="text/javascript">
-	function redirecionar() {
-		alert("Salvo com Sucesso!");
-
-	}
-</script>
-
 <h:head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title><ui:insert name="title">Login</ui:insert></title>
+	<title><ui:insert name="title">Listar Trabalhos</ui:insert></title>
 
 	<f:metadata>
-		<f:viewParam name="id" value="#{turmaMb.editarId}" />
-		<f:event listener="#{turmaMb.carregarEdicao}" type="preRenderView" />
-	</f:metadata>
+ +		<f:viewParam name="id" value="#{turmaMb.editarId}" />
+ +	<f:event listener="#{turmaMb.carregarEdicao}" type="preRenderView" />
+ +	</f:metadata>
 
 
 </h:head>
@@ -42,71 +34,51 @@
 		<div class="header clearfix">
 			<nav>
 			<ul class="nav nav-pills pull-right">
-				<li role="presentation" class="active"><a href="index.html">Home</a></li>
-
+				<li role="presentation" class="active"><a href="../index.html">Home</a></li>
 			</ul>
 			</nav>
 			<h3 class="text-muted">Escola Aprenda brincando</h3>
 		</div>
 		<div class="page-header">
-			<h1>Login</h1>
+			<h1>Trabalhos</h1>
+			<h:messages />
+			<h:form>
+				<table styleClass="table table table-hover">
+					<h:dataTable styleClass="table" value="#{turmaMb.listaTurma}"
+						var="turma">
+						<h:column>
+							<f:facet name="header">Id Turma</f:facet>
+							<h:outputText value="#{turma.id}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Professor</f:facet>
+							<h:outputText value="#{turma.professor.nome}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Data postagem</f:facet>
+							<h:outputText value="#{turma.inicio}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Data para entregar</f:facet>
+							<h:outputText value="#{turma.termino}" />
+						</h:column>
 
-
-
-			<div class="col-md-4 col-md-offset-4">
-				<h:panelGroup rendered="#{not empty param.msg}">
-					<div styleclass="alert alert-danger" role="alert">
-						<h:outputText value="#{param.msg}" />
-					</div>
-				</h:panelGroup>
-
-				<div>
-
-					<h:form>
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h:messages styleClass="alert alert-danger"></h:messages>
-							</div>
-							<div class="panel-body">
-								<div class="col-md-6">
-									<img src="imagens/logo.png" alt="..." class="img-rounded" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="inputEmail3" class="col-sm-2 control-label"></label>
-								<div class="col-sm-0">
-									<h:inputText styleClass="form-control" id="inputEmail3"
-										value="#{sessaoMB.emailForm}">
-										<f:passThroughAttribute name="placeholder" value="E-mail" />
-									</h:inputText>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="inputPassword3" class="col-sm-2 control-label"></label>
-								<div class="col-sm-0">
-									<h:inputSecret styleClass="form-control" id="inputPassword3"
-										value="#{sessaoMB.senhaForm}">
-										<f:passThroughAttribute name="placeholder" value="Senha" />
-									</h:inputSecret>
-								</div>
-							</div>
-						</div>
-
-
-						<div class="form-group">
-							<div class="col-sm-offset-3 col-sm-8">
-								<h:commandButton styleClass="btn btn-success" value="Entrar"
-									action="#{sessaoMB.entrar}" />
-								<button type="reset" class="btn btn-danger">Limpar</button>
-							</div>
-						</div>
-					</h:form>
-				</div>
-			</div>
+						<h:column>
+							<span> <h:link styleClass="btn btn-success"
+									outcome="/admin/arquivos">
+									
+									<span class="glyphicon glyphicon-folder-open"></span>
+									<f:param name="idturma" value="#{turma.id}" />
+									<span>  </span>
+									<span>Visualizar</span>
+								</h:link>
+							</span>
+						</h:column>
+					</h:dataTable>
+				</table>
+			</h:form>
 
 		</div>
-
-
 
 
 
