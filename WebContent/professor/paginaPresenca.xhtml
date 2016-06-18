@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:outputScript name="/libs/jquery.min.js" />
+<h:outputScript name="/libs/moment-with-locales.js" />
+<h:outputScript name="/js/menu.js" />
+<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
+<h:outputScript
+	name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
+
+
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title><ui:insert name="title">Lista de Prensença</ui:insert></title>
+</h:head>
+
+<h:body>
+	<div class="container">
+		<div class="header clearfix">
+			<nav>
+			<ul class="nav nav-pills pull-right">
+				<li role="presentation" class="active"><a href="../index.html">Home</a></li>
+				<li role="presentation"><a href="../login.xhtml">Sair</a></li>
+			</ul>
+			</nav>
+			<h3 class="text-muted">Escola Aprenda brincando</h3>
+		</div>
+		<div class="page-header">
+			<h1>
+				Alunos <small>Matriculado</small>
+			</h1>
+		</div>
+		<div class="col-md-4 col-md-4">
+			<div class="form-group">
+				<label>Data</label>
+				<div class='input-group date datetimepicker'>
+					<h:inputText styleClass="form-control"
+						value="#{clienteMb.cliente.nascimento}">
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+					</h:inputText>
+					<span class="input-group-addon"><span
+						class="glyphicon glyphicon-calendar"></span> </span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Professor</label>
+				<h:selectOneMenu styleClass="form-control"
+					value="#{turmaMb.turma.professor}">
+					<f:selectItem itemLabel="-" />
+					<f:selectItems value="#{clienteMb.listaProfessores}"
+						var="professor" itemLabel="#{professor.nome}"
+						itemValue="#{professor}" />
+				</h:selectOneMenu>
+			</div>
+		</div>
+
+
+		<div class="col-md-9 col-md-9">
+
+			<h:form>
+				<h:dataTable value="#{clienteMb.listaAlunos}" var="user"
+					styleClass="table table table-hover">
+					<f:facet name="header">Listagem</f:facet>
+					<h:column>
+						<f:facet name="header">Id Aluno</f:facet>
+						<h:outputText value="#{user.id}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Nome</f:facet>
+						<h:outputText value="#{user.nome}" />
+					</h:column>
+					<h:column>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Açoes</f:facet>
+						<label class="checkbox-inline"> <input type="checkbox"
+							id="inlineCheckbox1" value="option1"/> Falta </label>
+						<label class="checkbox-inline"> <input type="checkbox"
+							id="inlineCheckbox1" value="option1"/> Presente </label>
+					</h:column>
+				</h:dataTable>
+				<h:commandButton styleClass="btn btn-success"
+					onclick="redirecionar();" action="#{clienteMb.salvar}"
+					value="Salvar" />
+			</h:form>
+		</div>
+	</div>
+
+	<!--/.container-->
+
+	<h:outputScript name="/js/datepicker-component.js" />
+	<h:outputScript name="/libs/moment-with-locales.js" />
+	<h:outputScript name="/js/menu.js" />
+	<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
+	<h:outputScript
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+	<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
+	<h:outputStylesheet name="/libs/bootstrap/css/bootstrap.css" />
+	<h:outputStylesheet
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.css" />
+	<h:outputStylesheet name="/libs/bootstrap/template/offcanvas.css" />
+
+</h:body>
+</html>

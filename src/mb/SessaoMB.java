@@ -46,6 +46,16 @@ public class SessaoMB {
 	public String getNomeClienteLogado() {
 		return clienteLogado == null ? "" : clienteLogado.getNome();
 	}
+	public String getCpfClienteLogado() {
+		return clienteLogado == null ? "" : clienteLogado.getCpf();
+	}
+	public String getEmailClienteLogado() {
+		return clienteLogado == null ? "" : clienteLogado.getEmail();
+	}
+	public String getTelefoneClienteLogado() {
+		return clienteLogado == null ? "" : clienteLogado.getTelefone();
+	}
+	
 
 	public String sair() {
 		clienteLogado = null;

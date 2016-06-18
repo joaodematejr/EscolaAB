@@ -24,76 +24,91 @@
 		<div class="header clearfix">
 			<nav>
 			<ul class="nav nav-pills pull-right">
-			<li role="presentation" class="active"><a href="../index.html">Home</a></li>
+				<li role="presentation" class="active"><a href="../index.html">Home</a></li>
+				<li role="presentation"><a href="../login.xhtml">Sair</a></li>
 			</ul>
 			</nav>
 			<h3 class="text-muted">Escola Aprenda brincando</h3>
-		</div><div class="nome-cliente">
-			<h:panelGroup rendered="#{sessaoMB.estaLogado()}">
-					
-								<span class=" glyphicon glyphicon-user"></span> - <h:outputText value="#{sessaoMB.nomeClienteLogado}"/> <span class="caret"></span>
-					</h:panelGroup></div>
+		</div>
 		<div class="col-md-3 col-md-offset-0">
 			<h1>
-				Bem vindo <small> Adminstrador </small>
+				Bem vindo <small> Administrador </small>
 			</h1>
 		</div>
 	</div>
-
+	<div class="nome-cliente">
+		<h:panelGroup rendered="#{sessaoMB.estaLogado()}">
+			<span class=""></span>
+		</h:panelGroup>
+	</div>
 	<div class="row">
 		<div class="container-fluid">
-			<div class="col-md-4 col-md-offset-3">
-				<div class="dropdown">
-					<button class="btn btn-primary btn-lg btn-block" type="button"
-						data-toggle="dropdown">
-						Usuarios <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu">
-						<li><a href="clientes.xhtml">Cadastrar novos usuarios</a></li>
-						<li><a href="lista.xhtml">Listar todos os usuarios</a></li>
-
-					</ul>
-				</div>
-			</div>
+			<div class="col-md-4 col-md-offset-3"></div>
 		</div>
+		<div class="container-fluid"></div>
 		<div class="container-fluid">
-			<div class="col-md-4 col-md-offset-3">
-				<div class="dropdown">
-					<button class="btn btn-primary btn-lg btn-block" type="button"
-						data-toggle="dropdown">
-						Turmas <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu">
-						<li><a href="cadastroTurma.xhtml">Cadastrar novas turmas</a></li>
-						<li><a href="listaTurmas.xhtml">Listar turmas</a></li>
 
-					</ul>
+			<div class="col-md-4 col-md-offset-2">
+				<div class="dropdown">
+						<button class="btn btn-primary btn-lg btn-block" type="button"
+							data-toggle="dropdown">
+							Usuarios <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="clientes.xhtml">Cadastrar novos usuarios</a></li>
+							<li><a href="lista.xhtml">Listar todos os usuarios</a></li>
+
+						</ul>
+					</div>
+					<div class="dropdown">
+						<button class="btn btn-primary btn-lg btn-block" type="button"
+							data-toggle="dropdown">
+							Turmas <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="cadastroTurma.xhtml">Cadastrar novas turmas</a></li>
+							<li><a href="listaTurmas.xhtml">Listar turmas</a></li>
+
+						</ul>
+					</div>
+					<div class="dropdown">
+						<button class="btn btn-primary btn-lg btn-block" type="button"
+							data-toggle="dropdown">
+							Questões <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="cadastroQuestoes.xhtml">Cadastrar novas
+									questões</a></li>
+							<li><a href="listaQuestoes.xhtml">Listar questões</a></li>
+
+						</ul>
+					</div>
+			</div>
+			<div class="col-md-2 col-md-offset-4">
+				<div class="panel panel-default">
+					<div class="panel-body">Detalhes</div>
+					<div class="panel-footer">Nome</div>
+					<div class="panel-body">
+						<h:outputText value="#{sessaoMB.nomeClienteLogado}" />
+					</div>
+					<div class="panel-footer">CPF</div>
+					<div class="panel-body">
+						<h:outputText value="#{sessaoMB.cpfClienteLogado}" />
+					</div>
+					<div class="panel-footer">Email</div>
+					<div class="panel-body">
+						<h:outputText value="#{sessaoMB.emailClienteLogado}" />
+					</div>
+					<div class="panel-footer">Telefone</div>
+					<div class="panel-body">
+						<h:outputText value="#{sessaoMB.telefoneClienteLogado}" />
+					</div>
 				</div>
 			</div>
 		</div>
-
-		<div class="container-fluid">
-			<div class="col-md-4 col-md-offset-3">
-				<div class="dropdown">
-					<button class="btn btn-primary btn-lg btn-block" type="button"
-						data-toggle="dropdown">
-						Questões <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu">
-						<li><a href="cadastroQuestoes.xhtml">Cadastrar novas
-								questões</a></li>
-						<li><a href="listaQuestoes.xhtml">Listar questões</a></li>
-
-					</ul>
-				</div>
-			</div>
-		</div>
-
 	</div>
 
-
 	<!--/.container-->
-
 	<h:outputScript name="/jquery.min.js" />
 	<h:outputScript name="/menu.js" />
 	<h:outputScript name="/bootstrap/js/bootstrap.js" />
