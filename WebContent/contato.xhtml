@@ -8,7 +8,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title><ui:insert name="title">Cadastro</ui:insert></title>
+	<title><ui:insert name="title">Contato</ui:insert></title>
 	<h:outputStylesheet name="/css/bootstrap.css" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
 </h:head>
@@ -18,23 +18,22 @@
 		<div class="header clearfix">
 			<nav>
 			<ul class="nav nav-pills pull-right">
-					<li role="presentation" class="active"><a href="index.html">Home</a></li>
-					<li role="presentation"><a href="VersaoBeta/Abertura.xhtml">Quiz</a></li>
-					<li role="presentation"><a href="faq.xhtml">FAQ</a></li>
-					<li role="presentation"><a href="faq.xhtml">Contato</a></li>
-				</ul>
+				<li role="presentation" class="active"><a href="index.html">Home</a></li>
+				<li role="presentation"><a href="VersaoBeta/Abertura.xhtml">Quiz</a></li>
+				<li role="presentation"><a href="faq.xhtml">FAQ</a></li>
+
+			</ul>
 			</nav>
 			<h3 class="text-muted">Escola Aprenda brincando</h3>
 		</div>
 		<div class="col-md-3 col-md-offset-0">
 			<h1>
-				Bem vindo <small> Aluno </small>
+				Bem vindo <small>Deixe sua opinião</small>
 			</h1>
 		</div>
 
-		<div class="col-md-1">
-		</div>
-		
+		<div class="col-md-1"></div>
+
 		<div class="col-md-4">
 			<h:form>
 
@@ -47,31 +46,9 @@
 				</h:panelGroup>
 				<h:inputHidden value="#clienteMB.cliente.id}" />
 				<div class="form-group">
-					<label for="exampleInputPerfil">Aluno</label> <label
-						for="exampleInputPerfil"></label>
-
-					<h:selectOneMenu styleClass="form-control"
-						value="#{clienteMb.cliente.perfil}">
-						<f:selectItem itemLabel="Aluno" itemValue="ALUNO" />
-					</h:selectOneMenu>
-
-				</div>
-				<div class="form-group">
 					<label for="exampleInputNome">Nome Completo</label>
 					<h:inputText styleClass="form-control"
 						value="#{clienteMb.cliente.nome}" id="exampleInputNome" />
-				</div>
-				<div class="form-group">
-					<label for="exampleInputEstado">Estado</label> <label
-						for="exampleInputEstado">Estado</label>
-					<h:selectOneMenu styleClass="form-control"
-						value="#{clienteMb.cliente.estado}">
-						<f:selectItem itemLabel="-" itemValue="" />
-						<f:selectItem itemLabel="PARANA" itemValue="PARANA" />
-						<f:selectItem itemLabel="SANTACATARINA" itemValue="SANTACATARINA" />
-						<f:selectItem itemLabel="RIOGRANDEDOSUL"
-							itemValue="RIOGRANDEDOSUL" />
-					</h:selectOneMenu>
 				</div>
 				<div class="form-group">
 					<label for="exampleInputComplemento">Telefone</label>
@@ -84,18 +61,21 @@
 						value="#{clienteMb.cliente.email}" id="exampleInputEmail" />
 				</div>
 				<div class="form-group">
-					<label for="exampleInputComplemento">Senha</label>
-					<h:inputSecret redisplay="true" styleClass="form-control"
-						value="#{clienteMb.cliente.senha}" id="exampleInputSenha" />
+					<label for="exampleInputEstado">Motivo do contato</label>
+					<h:selectOneMenu styleClass="form-control"
+						value="#{clienteMb.cliente.estado}">
+						<f:selectItem itemLabel="-" itemValue="" />
+						<f:selectItem itemLabel="Duvida" itemValue="PARANA" />
+						<f:selectItem itemLabel="Sugestao" itemValue="SANTACATARINA" />
+						<f:selectItem itemLabel="Elogio" itemValue="RIOGRANDEDOSUL" />
+						<f:selectItem itemLabel="Reclamaçao" itemValue="RIOGRANDEDOSUL" />
+					</h:selectOneMenu>
 				</div>
-
-
-
-
-
-
-
-
+				<div class="form-group">
+					<label for="exampleInputComplemento">Mensagem</label>
+					<textarea class="form-control" rows="3"
+						value="#{clienteMb.cliente.email}" id="exampleInputMensageml"></textarea>
+				</div>
 
 				<button type="reset" class="btn btn-danger">Limpar</button>
 				<h:commandButton styleClass="btn btn-success"
