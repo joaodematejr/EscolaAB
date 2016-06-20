@@ -7,9 +7,12 @@
 
 		<!-- provedor/implementacao do JPA -->
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>entity.Chamada</class>
 		<class>entity.Cliente</class>
+		<class>entity.Contato</class>
 		<class>entity.Documento</class>
 		<class>entity.Questao</class>
+		<class>entity.Relatorio</class>
 		<class>entity.Turma</class>
 
 	

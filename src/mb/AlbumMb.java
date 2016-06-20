@@ -107,7 +107,7 @@ public class AlbumMb {
 			return "/arquivos?idturma=" + turma.getId().toString() + "&faces-redirect=true";
 		} catch (IOException e) {
 			e.printStackTrace();
-			return "";
+			return "arquivos.xhtml";
 		}
 	}
 }

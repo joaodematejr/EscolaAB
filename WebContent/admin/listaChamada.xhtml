@@ -15,11 +15,14 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title><ui:insert name="title">Listar Trabalhos Pagina Aluno</ui:insert></title>
+	<title><ui:insert name="title">Lista de Turmas </ui:insert></title>
+
 	<f:metadata>
  +		<f:viewParam name="id" value="#{turmaMb.editarId}" />
  +	<f:event listener="#{turmaMb.carregarEdicao}" type="preRenderView" />
  +	</f:metadata>
+
+
 </h:head>
 
 <h:body>
@@ -32,12 +35,13 @@
 			<nav>
 			<ul class="nav nav-pills pull-right">
 				<li role="presentation" class="active"><a href="../index.html">Home</a></li>
+				<li role="presentation"><a href="admListagem.xhtml">Administrador</a></li>
 			</ul>
 			</nav>
 			<h3 class="text-muted">Escola Aprenda brincando</h3>
 		</div>
 		<div class="page-header">
-			<h1>Trabalhos em aberto</h1>
+			<h1>Turmas</h1>
 			<h:messages />
 			<h:form>
 				<table styleClass="table table table-hover">
@@ -52,28 +56,23 @@
 							<h:outputText value="#{turma.professor.nome}" />
 						</h:column>
 						<h:column>
-							<f:facet name="header">Data para entregar</f:facet>
-							<h:outputText value="#{turma.termino}">
-								<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+							<f:facet name="header">Data inicio</f:facet>
+							<h:outputText value="#{turma.inicio}">
+							<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
 							</h:outputText>
-
 						</h:column>
 						<h:column>
-							<f:facet name="header">Data para entregar</f:facet>
+							<f:facet name="header">Data Termino</f:facet>
 							<h:outputText value="#{turma.termino}">
-								<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+							<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
 							</h:outputText>
-
 						</h:column>
-
 						<h:column>
 							<span> <h:link styleClass="btn btn-success"
-									outcome="arquivosAlunos">
-
-									<span class="glyphicon glyphicon-folder-open"></span>
-									<f:param name="idturma" value="#{turma.id}" />
-									<span> </span>
-									<span>Visualizar</span>
+									outcome="cadastroDaChamada">
+									<span class="glyphicon glyphicon-tasks"></span>
+									<span>Detahes</span>
+									<f:param name="id" value="#{turma.id}" />
 								</h:link>
 							</span>
 						</h:column>

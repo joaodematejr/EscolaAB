@@ -11,19 +11,11 @@
 <h:outputScript
 	name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
 <h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
-
-<script type="text/javascript">
-	function redirecionar() {
-		alert("Turma Salvo com Sucesso!");
-
-	}
-</script>
-
 <h:head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title><ui:insert name="title">Chamada</ui:insert></title>
+	<title><ui:insert name="title">Lista de chamada </ui:insert></title>
 
 	<f:metadata>
  +		<f:viewParam name="id" value="#{turmaMb.editarId}" />
@@ -39,7 +31,6 @@
 			<nav>
 			<ul class="nav nav-pills pull-right">
 				<li role="presentation" class="active"><a href="../index.html">Home</a></li>
-				<li role="presentation"><a href="../admin/admListagem.xhtml">Administrador</a></li>
 			</ul>
 			</nav>
 			<h3 class="text-muted">Escola Aprenda brincando</h3>
@@ -53,7 +44,7 @@
 		<div class="col-md-6">
 
 			<h1>
-				<small>Lista de Chamada</small>
+				<small>Chamada</small>
 			</h1>
 
 		</div>
@@ -62,16 +53,16 @@
 			<div class="col-md-4 ">
 				<h:panelGroup rendered="#{not empty turmaMb.turma.id}">
 					<div class="form-group id">
-						<label>ID da Turma</label>
+						<label>ID</label>
 						<h:inputText styleClass="form-control" readonly="true"
 							value="#{turmaMb.turma.id}" />
 					</div>
 				</h:panelGroup>
-				<h:inputHidden value="#{chamadaMb.chamamada.id}" />
+				<h:inputHidden value="#{chamadaMb.chamada.id}" />
 				<div class="form-group">
 					<label>Professor</label>
 					<h:selectOneMenu styleClass="form-control"
-						value="#{chamadaMb.chamada.professor}">
+						value="#{turmaMb.turma.professor}">
 						<f:selectItem itemLabel="-" />
 						<f:selectItems value="#{clienteMb.listaProfessores}"
 							var="professor" itemLabel="#{professor.nome}"
@@ -79,17 +70,18 @@
 					</h:selectOneMenu>
 				</div>
 				<div class="form-group">
-					<label>Data da aula</label>
-					<div class='input-group date datetimepicker'>
-						<h:inputText styleClass="form-control"
-							value="#{chamadaMb.chamada.hoje}">
-							<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
-						</h:inputText>
-						<span class="input-group-addon"><span
-							class="glyphicon glyphicon-calendar"></span> </span>
+					<div class="form-group">
+						<label>Data da aula</label>
+						<div class='input-group date datetimepicker'>
+							<h:inputText styleClass="form-control"
+								value="#{turmaMb.turma.termino}">
+								<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+							</h:inputText>
+							<span class="input-group-addon"><span
+								class="glyphicon glyphicon-calendar"></span> </span>
+						</div>
 					</div>
 
-					<div class="col-md-15"></div>
 					<div class="row">
 						<div class="col-sm-10">
 							<h:dataTable styleClass="table-condensed table-hover"
@@ -100,28 +92,17 @@
 									<h:outputText value="#{cliente.nome}" />
 								</h:column>
 								<h:column>
-									<f:facet name="header">Ação</f:facet>
-									<h:commandLink>
-										<f:attribute name="idCliente" value="#{cliente}" />
-										<f:ajax event="click" execute="@form" render="@form"
-											listener="#{chamadaMb.excluirCliente}" />
-										<span class=""></span>
-									</h:commandLink>
-									<h:selectOneMenu styleClass="form-control"
-										value="#{chamadaMb.chamada.falta}">
-										<f:selectItem itemLabel="-" itemValue="" />
-										<f:selectItem itemLabel="Atrasado"
-											itemValue="ATRASADO" />
-										<f:selectItem itemLabel="Presente"
-											itemValue="PRESENTE" />
-										<f:selectItem itemLabel="Ausente" itemValue="AUSENTE" />
-										<f:selectItem itemLabel="Embora cedo" itemValue="EMBORACEDO" />
-									</h:selectOneMenu>
+									<f:facet name="header">Ações</f:facet>
+									<div class="checkbox">
+										<label> <input type="checkbox" value="" />Ausente
+										</label> <label> <input type="checkbox" value="#{turmaMb.turma.clienteTurma}" />Presente
+										</label>
+									</div>
 								</h:column>
+
 							</h:dataTable>
 						</div>
 					</div>
-
 					<h:commandButton action="#{chamadaMb.salvar}" value="Salvar"
 						styleClass="btn btn-success" />
 				</div>

@@ -37,49 +37,50 @@
 		<div class="col-md-4">
 			<h:form>
 
-				<h:panelGroup rendered="#{not empty clienteMb.cliente.id}">
+				<h:panelGroup rendered="#{not empty contatoMb.contato.id}">
 					<div class="form-group id">
 						<label for="exampleId">ID</label>
 						<h:inputText styleClass="form-control" readonly="true"
-							value="#{clienteMb.cliente.id}" id="exampleId" />
+							value="#{contatoMb.contato.id}" id="exampleId" />
 					</div>
 				</h:panelGroup>
-				<h:inputHidden value="#clienteMB.cliente.id}" />
+				<h:inputHidden value="#contatoMB.contato.id}" />
 				<div class="form-group">
 					<label for="exampleInputNome">Nome Completo</label>
 					<h:inputText styleClass="form-control"
-						value="#{clienteMb.cliente.nome}" id="exampleInputNome" />
+						value="#{contatoMb.contato.nome}" id="exampleInputNome" />
 				</div>
 				<div class="form-group">
-					<label for="exampleInputComplemento">Telefone</label>
+					<label for="exampleInputTelefone">Telefone para contato</label>
 					<h:inputText styleClass="form-control"
-						value="#{clienteMb.cliente.telefone}" id="exampleInputTelefone" />
+						value="#{contatoMb.contato.telefone}" id="exampleInputTelefone" />
 				</div>
 				<div class="form-group">
-					<label for="exampleInputComplemento">E-mail</label>
+					<label for="exampleInputEmail">E-mail para retorno</label>
 					<h:inputText styleClass="form-control"
-						value="#{clienteMb.cliente.email}" id="exampleInputEmail" />
+						value="#{contatoMb.contato.email}" id="exampleInputEmail" />
 				</div>
 				<div class="form-group">
-					<label for="exampleInputEstado">Motivo do contato</label>
+					<label for="exampleInputMotivoContato">Motivo do contato</label>
 					<h:selectOneMenu styleClass="form-control"
-						value="#{clienteMb.cliente.estado}">
+						value="#{contatoMb.contato.motivoContato}">
 						<f:selectItem itemLabel="-" itemValue="" />
-						<f:selectItem itemLabel="Duvida" itemValue="PARANA" />
-						<f:selectItem itemLabel="Sugestao" itemValue="SANTACATARINA" />
-						<f:selectItem itemLabel="Elogio" itemValue="RIOGRANDEDOSUL" />
-						<f:selectItem itemLabel="Reclamaçao" itemValue="RIOGRANDEDOSUL" />
+						<f:selectItem itemLabel="Duvida" itemValue="DUVIDA" />
+						<f:selectItem itemLabel="Sugestao" itemValue="SUGESTAO" />
+						<f:selectItem itemLabel="Elogio" itemValue="ELOGIO" />
+						<f:selectItem itemLabel="Reclamaçao" itemValue="RECLAMACAO" />
 					</h:selectOneMenu>
 				</div>
 				<div class="form-group">
-					<label for="exampleInputComplemento">Mensagem</label>
-					<textarea class="form-control" rows="3"
-						value="#{clienteMb.cliente.email}" id="exampleInputMensageml"></textarea>
+					<label for="exampleInputMensagem">Mensagem</label>
+					<h:inputText  class="form-control" style="height:150px"
+						rows="10" cols="40" value="#{contatoMb.contato.mensagem}"
+						id="exampleInputMensagem" />			
 				</div>
 
 				<button type="reset" class="btn btn-danger">Limpar</button>
 				<h:commandButton styleClass="btn btn-success"
-					onclick="redirecionar();" action="#{clienteMb.salvar}"
+					onclick="redirecionar();" action="#{contatoMb.salvar}"
 					value="Salvar" />
 			</h:form>
 		</div>
