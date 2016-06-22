@@ -43,6 +43,14 @@
 			</h1>
 		</div>
 	</div>
+	<div class="col-md-1"></div>
+	<div class="col-md-5">
+	<h:link outcome="enviarDocumentos" styleClass="btn btn-success">
+		<span>Documentos</span>
+		<f:param name="idturma" value="#{albumMb.turma.id}" />
+		<span class=""></span>
+	</h:link>
+	</div>
 	<h:form>
 		<h:dataTable styleClass="table" value="#{albumMb.imagens}" var="file">
 			<h:column>
@@ -73,12 +81,7 @@
 						<span>Excluir</span>
 						<span class=""></span>
 					</h:commandLink>
-					<div class="col-md-2 col-md-0"></div> <h:link
-						outcome="enviarDocumentos" styleClass="btn btn-success">
-						<span>Documentos</span>
-						<f:param name="idturma" value="#{albumMb.turma.id}" />
-						<span class=""></span>
-					</h:link>
+					<div class="col-md-2 col-md-0"></div>
 				</span>
 			</h:column>
 		</h:dataTable>
