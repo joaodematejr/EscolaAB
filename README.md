@@ -5,3 +5,6 @@ Escola Aprenda Brincando
 Tecnico em informatica para internet 2015
 
 Java...
+
+Alunos João, Diogo e Pedro
+ 

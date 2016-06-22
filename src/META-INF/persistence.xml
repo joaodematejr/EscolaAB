@@ -11,6 +11,7 @@
 		<class>entity.Cliente</class>
 		<class>entity.Contato</class>
 		<class>entity.Documento</class>
+		<class>entity.Pergunta</class>
 		<class>entity.Questao</class>
 		<class>entity.Relatorio</class>
 		<class>entity.Turma</class>

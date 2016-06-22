@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title><ui:insert name="title">Cadastro</ui:insert></title>
+	<h:outputStylesheet name="/css/bootstrap.css" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+</h:head>
+<h:body>
+	<div class="container">
+		<div class="header clearfix">
+			<nav>
+			<ul class="nav nav-pills pull-right">
+				<li role="presentation" class="active"><a href="../index.html">Home</a></li>
+			</ul>
+			</nav>
+			<h3 class="text-muted">Escola Aprenda brincando</h3>
+		</div>
+		<div class="page-header">
+			<h1>
+				Perguntas <small>no banco de dados</small>
+			</h1>
+		</div>
+
+		<div class="col-md-14">
+			<h:form>
+				<h:dataTable value="#{perguntaMb.listaPerguntas}" var="perguntas"
+					styleClass="table table table-hover table table-bordered">
+					<h:column>
+						<f:facet name="header">ID da pergunta</f:facet>
+						<h:outputText value="#{perguntas.id}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Resposta Correta</f:facet>
+						<h:outputText value="#{perguntas.respostaCorreta}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">1º Resposta Errada </f:facet>
+						<h:outputText value="#{perguntas.primeiraErrada}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">2º Resposta Errada </f:facet>
+						<h:outputText value="#{perguntas.segundaErrada}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">3º Resposta Errada </f:facet>
+						<h:outputText value="#{perguntas.terceiraErrada}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">4º Resposta Errada </f:facet>
+						<h:outputText value="#{perguntas.quartaErrada}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">5º Resposta Errada </f:facet>
+						<h:outputText value="#{perguntas.quintaErrada}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Açoes</f:facet>
+						<h:link styleClass="btn btn-default" outcome="cadastrodeperguntas"
+							value="Editar" onclick="redirecionar();">
+							<f:param name="id" value="#{perguntas.id}" />
+						</h:link>
+						<h:commandLink
+							onclick=" return confirm('Tem certeza da exclusão um cliente #{perguntas.pergunta}');"
+							styleClass="btn btn-danger"
+							action="#{perguntaMb.excluir(perguntas.pergunta)}" value="Excluir" />
+					</h:column>
+				</h:dataTable>
+			</h:form>
+		</div>
+	</div>
+	<!--/.container-->
+
+	<h:outputScript name="/jquery.min.js" />
+	<h:outputScript name="/menu.js" />
+	<h:outputScript name="/bootstrap/js/bootstrap.js" />
+	<h:outputScript name="/bootstrap/template/offcanvas.js" />
+	<h:outputScript name="/js/datepicker-component.js" />
+	<h:outputScript name="/libs/moment-with-locales.js" />
+	<h:outputScript name="/js/menu.js" />
+	<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
+	<h:outputScript
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+	<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
+	<h:outputStylesheet name="/libs/bootstrap/css/bootstrap.css" />
+	<h:outputStylesheet
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.css" />
+	<h:outputStylesheet name="/libs/bootstrap/template/offcanvas.css" />
+
+	<h:outputScript name="/libs/jquery.min.js" />
+	<h:outputScript name="/libs/moment-with-locales.js" />
+	<h:outputScript name="/js/menu.js" />
+	<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
+	<h:outputScript
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+	<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
+</h:body>
+</html>
