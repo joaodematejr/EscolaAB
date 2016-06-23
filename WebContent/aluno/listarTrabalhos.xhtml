@@ -15,7 +15,23 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title><ui:insert name="title">Listar Trabalhos Pagina Aluno</ui:insert></title>
+	<title><ui:insert name="title">ALUNO</ui:insert></title>
+	<h:outputStylesheet name="/css/bootstrap.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<h:outputScript name="../resources/js/jquery.min.js" />
+<h:outputScript name="../resources/js/moment-with-locales.js" />
+<h:outputScript name="../resources/js/menu.js" />
+<h:outputScript name="../resources/js/bootstrap.js" />
+<h:outputScript name="../resources/js/bootstrap-datetimepicker.js" />
+<h:outputScript name="../resources/js/offcanvas.js" />
+<link href="resources/css/altecacoes.css" rel="stylesheet"/>
+<link href="../resources/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../resources/css/ie10-viewport-bug-workaround.css" rel="stylesheet"/>
+<link href="../resources/jumbotron-narrow.css" rel="stylesheet"/>
+<script src="../resources/js/ie-emulation-modes-warning.js"/>
+<script src="../resources/js/jquery.min.js"/>
+<script src="../resources/js/bootstrap.min.js"/>
 	<f:metadata>
  +		<f:viewParam name="id" value="#{turmaMb.editarId}" />
  +	<f:event listener="#{turmaMb.carregarEdicao}" type="preRenderView" />

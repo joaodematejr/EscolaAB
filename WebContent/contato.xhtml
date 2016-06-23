@@ -11,6 +11,12 @@
 	<title><ui:insert name="title">Contato</ui:insert></title>
 	<h:outputStylesheet name="/css/bootstrap.css" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<link href="resources/css/altecacoes.css" rel="stylesheet" />
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="resources/css/ie10-viewport-bug-workaround.css"
+		rel="stylesheet" />
+	<link href="resources/jumbotron-narrow.css" rel="stylesheet" />
+	<script src="resources/js/ie-emulation-modes-warning.js" />
 </h:head>
 
 <h:body>
@@ -73,9 +79,9 @@
 				</div>
 				<div class="form-group">
 					<label for="exampleInputMensagem">Mensagem</label>
-					<h:inputText  class="form-control" style="height:150px"
-						rows="10" cols="40" value="#{contatoMb.contato.mensagem}"
-						id="exampleInputMensagem" />			
+					<h:inputText class="form-control" style="height:150px" rows="10"
+						cols="40" value="#{contatoMb.contato.mensagem}"
+						id="exampleInputMensagem" />
 				</div>
 
 				<button type="reset" class="btn btn-danger">Limpar</button>
@@ -87,9 +93,9 @@
 	</div>
 	<!--/.container-->
 
-	<h:outputScript name="/jquery.min.js" />
-	<h:outputScript name="/menu.js" />
-	<h:outputScript name="/bootstrap/js/bootstrap.js" />
+	<h:outputScript name="resources/jquery.min.js" />
+	<h:outputScript name="resources/js/menu.js" />
+	<h:outputScript name="resources/js/bootstrap.js" />
 	<h:outputScript name="/bootstrap/template/offcanvas.js" />
 </h:body>
 </html>

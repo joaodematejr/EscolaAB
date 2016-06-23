@@ -4,14 +4,11 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
-
-
 <h:head>
-
-	<meta charset="utf-8" />
+		<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title><ui:insert name="title">LISTA DE CHAMADA</ui:insert></title>
+	<title><ui:insert name="title">CADASTRO PROVA</ui:insert></title>
 	<h:outputStylesheet name="/css/bootstrap.css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -28,24 +25,20 @@
 <script src="../resources/js/ie-emulation-modes-warning.js"/>
 <script src="../resources/js/jquery.min.js"/>
 <script src="../resources/js/bootstrap.min.js"/>
-
-
-
-	<f:metadata>
- +		<f:viewParam name="id" value="#{turmaMb.editarId}" />
- +	<f:event listener="#{turmaMb.carregarEdicao}" type="preRenderView" />
- +	</f:metadata>
-
-
+<f:metadata>
+<f:viewParam name="id" value="#{provaMb.editarId}" />
+ <f:event listener="#{provaMb.carregarEdicao}" type="preRenderView" />
+ </f:metadata>
 </h:head>
 <h:body>
 
 	<div class="container">
 		<div class="header clearfix">
 			<nav>
-			<ul class="nav nav-pills pull-right">
+		<ul class="nav nav-pills pull-right">
 				<li role="presentation" class="active"><a href="../index.html">Home</a></li>
-			</ul>
+				<li role="presentation"><a href="../professor/professor.xhtml">Professor</a></li>
+				</ul>
 			</nav>
 			<h3 class="text-muted">Escola Aprenda brincando</h3>
 		</div>
@@ -56,27 +49,28 @@
 		</div>
 		<div class="col-md-6"></div>
 		<div class="col-md-6">
-
 			<h1>
-				<small>Chamada</small>
+				<small>Cadastro de Provas</small>
 			</h1>
 
 		</div>
 		<h:messages />
 		<h:form>
-			<div class="col-md-4 ">
-				<h:panelGroup rendered="#{not empty turmaMb.turma.id}">
-					<div class="form-group id">
-						<label>ID</label>
-						<h:inputText styleClass="form-control" readonly="true"
-							value="#{turmaMb.turma.id}" />
-					</div>
-				</h:panelGroup>
-				<h:inputHidden value="#{chamadaMb.chamada.id}" />
+		<div class="col-md-4 ">
+			<h:panelGroup rendered="#{not empty provaMb.prova.id}">
+				<div class="form-group id">
+					<label>ID</label>
+					<h:inputText styleClass="form-control" readonly="true"
+						value="#{provaMb.prova.id}" />
+				</div>
+			</h:panelGroup>
+			<h:inputHidden value="#{provaMb.prova.id}" />
+
+			
 				<div class="form-group">
 					<label>Professor</label>
 					<h:selectOneMenu styleClass="form-control"
-						value="#{turmaMb.turma.professor}">
+						value="#{provaMb.prova.professor}">
 						<f:selectItem itemLabel="-" />
 						<f:selectItems value="#{clienteMb.listaProfessores}"
 							var="professor" itemLabel="#{professor.nome}"
@@ -84,33 +78,55 @@
 					</h:selectOneMenu>
 				</div>
 				<div class="form-group">
+					
+					
+					<legend>Perguntas</legend>
+					<div class="col-md-15">
+						<h:selectOneMenu id="uiSelecionaPergunta" styleClass="form-control"
+							value="#{provaMb.perguntaSelecionado}">
+							<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+							<f:selectItems value="#{perguntaMb.listaPerguntas}" var="per"
+								itemLabel="#{per.pergunta}" itemValue="#{per}" />
+						</h:selectOneMenu>
 
+						
+					</div>
 					<div class="row">
 						<div class="col-sm-10">
 							<h:dataTable styleClass="table-condensed table-hover"
-								id="uiClientesturma" value="#{turmaMb.turma.clienteTurma}"
-								var="cliente">
+								id="uiPerguntaprova" value="#{provaMb.prova.perguntaProva}"
+								var="prova">
 								<h:column>
-									<f:facet name="header">Nome</f:facet>
-									<h:outputText value="#{cliente.nome}" />
+									<f:facet name="header">ID</f:facet>
+									<h:outputText value="#{prova.id}" />
 								</h:column>
 								<h:column>
-									<f:facet name="header">Ações</f:facet>
-									<div class="checkbox">
-										<label> 
-										<input type="checkbox" value="" />Ausente
-										</label> 
-										<label> 
-										<input type="checkbox" var="presente" value="#{turmaMb.turma.chamada}" />Presente
-										</label>
-									</div>
+									<f:facet name="header">Pergunta</f:facet>
+									<h:outputText value="#{prova.pergunta}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">Excluir</f:facet>
+									<h:commandLink>
+										<f:attribute name="idProva" value="#{prova}" />
+										<f:ajax event="click" execute="@form" render="@form"
+											listener="#{provaMb.excluirProva}" />
+										<span class="glyphicon glyphicon-remove-circle"></span>
+									</h:commandLink>
 								</h:column>
 
 							</h:dataTable>
 						</div>
 					</div>
-					<h:commandButton action="#{chamadaMb.salvar}" value="Salvar"
+					<button class="btn btn-danger">Limpar</button>
+					<h:commandButton action="#{provaMb.salvar}" value="Salvar"
 						styleClass="btn btn-success" />
+					<h:commandLink styleClass="btn btn-info">
+						<f:ajax event="click" execute="uiSelecionaPergunta"
+							listener="#{provaMb.adicionarPergunta}"
+							
+							render="uiPerguntaprova uiSelecionaPergunta" />
+						<span class="glyphicon glyphicon-ok"></span>
+					</h:commandLink>
 				</div>
 			</div>
 		</h:form>
@@ -124,5 +140,7 @@
 		<h:outputScript name="../resources/js/bootstrap.js" />
 		<h:outputScript name="../resources/js/bootstrap-datetimepicker.js" />
 		<h:outputScript name="../resources/js/offcanvas.js" />
+		
+
 </h:body>
 </html>

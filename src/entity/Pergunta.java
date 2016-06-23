@@ -23,16 +23,13 @@ public class Pergunta {
 	@ManyToOne
 	@Enumerated(EnumType.STRING)
 	private Cliente professor;
-	private String Pergunta;
-	private String respostaCorreta;
+	private String pergunta;
+	private String correta;
 	private String primeiraErrada;
 	private String segundaErrada;
 	private String terceiraErrada;
 	private String quartaErrada;
 	private String quintaErrada;
-
-	
-	
 
 	public Long getId() {
 		return id;
@@ -51,19 +48,19 @@ public class Pergunta {
 	}
 
 	public String getPergunta() {
-		return Pergunta;
+		return pergunta;
 	}
 
 	public void setPergunta(String pergunta) {
-		Pergunta = pergunta;
+		this.pergunta = pergunta;
 	}
 
-	public String getRespostaCorreta() {
-		return respostaCorreta;
+	public String getCorreta() {
+		return correta;
 	}
 
-	public void setRespostaCorreta(String respostaCorreta) {
-		respostaCorreta = respostaCorreta;
+	public void setCorreta(String correta) {
+		this.correta = correta;
 	}
 
 	public String getPrimeiraErrada() {

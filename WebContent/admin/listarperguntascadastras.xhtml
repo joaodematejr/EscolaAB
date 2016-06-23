@@ -4,13 +4,28 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
+
 <h:head>
-	<meta charset="utf-8" />
+<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title><ui:insert name="title">Cadastro</ui:insert></title>
+	<title><ui:insert name="title">LISTA DE PERGUNTAS</ui:insert></title>
 	<h:outputStylesheet name="/css/bootstrap.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<h:outputScript name="../resources/js/jquery.min.js" />
+<h:outputScript name="../resources/js/moment-with-locales.js" />
+<h:outputScript name="../resources/js/menu.js" />
+<h:outputScript name="../resources/js/bootstrap.js" />
+<h:outputScript name="../resources/js/bootstrap-datetimepicker.js" />
+<h:outputScript name="../resources/js/offcanvas.js" />
+<link href="resources/css/altecacoes.css" rel="stylesheet"/>
+<link href="../resources/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../resources/css/ie10-viewport-bug-workaround.css" rel="stylesheet"/>
+<link href="../resources/jumbotron-narrow.css" rel="stylesheet"/>
+<script src="../resources/js/ie-emulation-modes-warning.js"/>
+<script src="../resources/js/jquery.min.js"/>
+<script src="../resources/js/bootstrap.min.js"/>
 </h:head>
 <h:body>
 	<div class="container">
@@ -38,7 +53,7 @@
 					</h:column>
 					<h:column>
 						<f:facet name="header">Resposta Correta</f:facet>
-						<h:outputText value="#{perguntas.respostaCorreta}" />
+						<h:outputText value="#{perguntas.correta}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">1º Resposta Errada </f:facet>
@@ -66,10 +81,7 @@
 							value="Editar" onclick="redirecionar();">
 							<f:param name="id" value="#{perguntas.id}" />
 						</h:link>
-						<h:commandLink
-							onclick=" return confirm('Tem certeza da exclusão um cliente #{perguntas.pergunta}');"
-							styleClass="btn btn-danger"
-							action="#{perguntaMb.excluir(perguntas.pergunta)}" value="Excluir" />
+				
 					</h:column>
 				</h:dataTable>
 			</h:form>
@@ -77,28 +89,13 @@
 	</div>
 	<!--/.container-->
 
-	<h:outputScript name="/jquery.min.js" />
-	<h:outputScript name="/menu.js" />
-	<h:outputScript name="/bootstrap/js/bootstrap.js" />
-	<h:outputScript name="/bootstrap/template/offcanvas.js" />
-	<h:outputScript name="/js/datepicker-component.js" />
-	<h:outputScript name="/libs/moment-with-locales.js" />
-	<h:outputScript name="/js/menu.js" />
-	<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
-	<h:outputScript
-		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
-	<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
-	<h:outputStylesheet name="/libs/bootstrap/css/bootstrap.css" />
-	<h:outputStylesheet
-		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.css" />
-	<h:outputStylesheet name="/libs/bootstrap/template/offcanvas.css" />
-
-	<h:outputScript name="/libs/jquery.min.js" />
-	<h:outputScript name="/libs/moment-with-locales.js" />
-	<h:outputScript name="/js/menu.js" />
-	<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
-	<h:outputScript
-		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
-	<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
+		<h:outputScript name="../resources/js/datepicker-component.js" />
+		<h:outputScript name="../resources/js/menu.js" />
+		<h:outputStylesheet name="/libs/css/offcanvas.css" />
+		<h:outputScript name="../resources/js/jquery.min.js" />
+		<h:outputScript name="../resources/js/moment-with-locales.js" />
+		<h:outputScript name="../resources/js/bootstrap.js" />
+		<h:outputScript name="../resources/js/bootstrap-datetimepicker.js" />
+		<h:outputScript name="../resources/js/offcanvas.js" />
 </h:body>
 </html>

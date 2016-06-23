@@ -80,7 +80,7 @@ public class PerguntaMb {
 	public String salvar() {
 		perguntaRN.salvar(pergunta);
 		listaPerguntas = null;
-		return "index.html";
+		return "";
 	}
 
 	public void carregarEdicao() {

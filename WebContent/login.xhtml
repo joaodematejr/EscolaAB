@@ -4,20 +4,17 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
-<h:outputScript name="/libs/jquery.min.js" />
-<h:outputScript name="/libs/moment-with-locales.js" />
-<h:outputScript name="/js/menu.js" />
-<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
-<h:outputScript
-	name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
-<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
-
-<script type="text/javascript">
-	function redirecionar() {
-		alert("Salvo com Sucesso!");
-
-	}
-</script>
+<h:outputScript name="resources/js/jquery.min.js" />
+<h:outputScript name="resources/js/moment-with-locales.js" />
+<h:outputScript name="resources/js/menu.js" />
+<h:outputScript name="../resources/js/bootstrap.js" />
+<h:outputScript name="resources/js/bootstrap-datetimepicker.js" />
+<h:outputScript name="resources/js/offcanvas.js" />
+<link href="resources/css/altecacoes.css" rel="stylesheet"/>
+<link href="resources/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="resources/css/ie10-viewport-bug-workaround.css" rel="stylesheet"/>
+<link href="resources/jumbotron-narrow.css" rel="stylesheet"/>
+<script src="resources/js/ie-emulation-modes-warning.js"/>
 
 <h:head>
 	<meta charset="utf-8" />
@@ -69,7 +66,7 @@
 							</div>
 							<div class="panel-body">
 								<div class="col-md-6">
-									<img src="imagens/logo.png" alt="..." class="img-rounded" />
+									<img src="resources/imagens/logo.png" alt="..." class="img-rounded" />
 								</div>
 							</div>
 							<div class="form-group">
@@ -115,25 +112,14 @@
 
 
 		<!--/.container-->
-		<h:outputScript name="/js/datepicker-component.js" />
-		<h:outputScript name="/libs/moment-with-locales.js" />
-		<h:outputScript name="/js/menu.js" />
-		<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
-		<h:outputScript
-			name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
-		<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
-		<h:outputStylesheet name="/libs/bootstrap/css/bootstrap.css" />
-		<h:outputStylesheet
-			name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.css" />
+		<h:outputScript name="resources/js/datepicker-component.js" />
+		<h:outputScript name="resources/js/menu.js" />
 		<h:outputStylesheet name="/libs/bootstrap/template/offcanvas.css" />
-
-		<h:outputScript name="/libs/jquery.min.js" />
-		<h:outputScript name="/libs/moment-with-locales.js" />
-		<h:outputScript name="/js/menu.js" />
-		<h:outputScript name="/libs/bootstrap/js/bootstrap.js" />
-		<h:outputScript
-			name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
-		<h:outputScript name="/libs/bootstrap/template/offcanvas.js" />
+		<h:outputScript name="resources/jquery.min.js" />
+		<h:outputScript name="resources/js/moment-with-locales.js" />
+		<h:outputScript name="resources/js/bootstrap.js" />
+		<h:outputScript name="resources/js/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+		<h:outputScript name="resources/js/bootstrap/template/offcanvas.js" />
 	</div>
 </h:body>
 </html>

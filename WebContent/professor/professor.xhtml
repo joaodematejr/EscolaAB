@@ -8,16 +8,24 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title><ui:insert name="title">Professor</ui:insert></title>
+	<title><ui:insert name="title">PROFESSOR</ui:insert></title>
 	<h:outputStylesheet name="/css/bootstrap.css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet"
-		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-	<script
-		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<h:outputScript name="../resources/js/jquery.min.js" />
+	<h:outputScript name="../resources/js/moment-with-locales.js" />
+	<h:outputScript name="../resources/js/menu.js" />
+	<h:outputScript name="../resources/js/bootstrap.js" />
+	<h:outputScript name="../resources/js/bootstrap-datetimepicker.js" />
+	<h:outputScript name="../resources/js/offcanvas.js" />
+	<link href="resources/css/altecacoes.css" rel="stylesheet" />
+	<link href="../resources/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="../resources/css/ie10-viewport-bug-workaround.css"
+		rel="stylesheet" />
+	<link href="../resources/jumbotron-narrow.css" rel="stylesheet" />
+	<script src="../resources/js/ie-emulation-modes-warning.js" />
+	<script src="../resources/js/jquery.min.js" />
+	<script src="../resources/js/bootstrap.min.js" />
 </h:head>
 <h:body>
 	<div class="container">
@@ -49,6 +57,17 @@
 		<div class="container-fluid">
 
 			<div class="col-md-4 col-md-offset-2">
+				<div class="dropdown">
+					<button
+						class="btn btn-primary btn-lg btn-block glyphicon glyphicon-floppy-saved"
+						type="button" data-toggle="dropdown">
+						Provas <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="../admin/listarProvas.xhtml">Editar Provas</a></li>
+
+					</ul>
+				</div>
 
 				<div class="dropdown">
 					<button
@@ -69,8 +88,10 @@
 						Perguntas <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
-						<li><a href="../admin/cadastrodeperguntas.xhtml">Cadastrar novas questões</a></li>
-						<li><a href="../admin/listarperguntascadastras.xhtml">Listar questões</a></li>
+						<li><a href="../admin/cadastrodeperguntas.xhtml">Cadastrar
+								novas questões</a></li>
+						<li><a href="../admin/listarperguntascadastras.xhtml">Listar
+								questões</a></li>
 
 					</ul>
 				</div>
@@ -117,9 +138,13 @@
 	</div>
 
 	<!--/.container-->
-	<h:outputScript name="/jquery.min.js" />
-	<h:outputScript name="/menu.js" />
-	<h:outputScript name="/bootstrap/js/bootstrap.js" />
-	<h:outputScript name="/bootstrap/template/offcanvas.js" />
+	<h:outputScript name="../resources/js/datepicker-component.js" />
+	<h:outputScript name="../resources/js/menu.js" />
+	<h:outputStylesheet name="/libs/css/offcanvas.css" />
+	<h:outputScript name="../resources/js/jquery.min.js" />
+	<h:outputScript name="../resources/js/moment-with-locales.js" />
+	<h:outputScript name="../resources/js/bootstrap.js" />
+	<h:outputScript name="../resources/js/bootstrap-datetimepicker.js" />
+	<h:outputScript name="../resources/js/offcanvas.js" />
 </h:body>
 </html>

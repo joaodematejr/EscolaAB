@@ -15,16 +15,24 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title><ui:insert name="title">Arquivos da turma</ui:insert></title>
+	<title><ui:insert name="title">ARQUIVOS</ui:insert></title>
 	<h:outputStylesheet name="/css/bootstrap.css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet"
-		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-	<script
-		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<h:outputScript name="../resources/js/jquery.min.js" />
+	<h:outputScript name="../resources/js/moment-with-locales.js" />
+	<h:outputScript name="../resources/js/menu.js" />
+	<h:outputScript name="../resources/js/bootstrap.js" />
+	<h:outputScript name="../resources/js/bootstrap-datetimepicker.js" />
+	<h:outputScript name="../resources/js/offcanvas.js" />
+	<link href="resources/css/altecacoes.css" rel="stylesheet" />
+	<link href="../resources/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="../resources/css/ie10-viewport-bug-workaround.css"
+		rel="stylesheet" />
+	<link href="../resources/jumbotron-narrow.css" rel="stylesheet" />
+	<script src="../resources/js/ie-emulation-modes-warning.js" />
+	<script src="../resources/js/jquery.min.js" />
+	<script src="../resources/js/bootstrap.min.js" />
 </h:head>
 <h:body>
 	<div class="container">
@@ -45,23 +53,17 @@
 	</div>
 	<div class="col-md-1"></div>
 	<div class="col-md-5">
-	<h:link outcome="enviarDocumentos" styleClass="btn btn-success">
-		<span>Documentos</span>
-		<f:param name="idturma" value="#{albumMb.turma.id}" />
-		<span class=""></span>
-	</h:link>
+		<h:link outcome="enviarDocumentos" styleClass="btn btn-success">
+			<span>Documentos</span>
+			<f:param name="idturma" value="#{albumMb.turma.id}" />
+			<span class=""></span>
+		</h:link>
 	</div>
 	<h:form>
-		<h:dataTable styleClass="table" value="#{albumMb.imagens}" var="file">
+		<h:dataTable styleClass="table table table-hover table table-bordered"
+			value="#{albumMb.imagens}" var="file">
 			<h:column>
-				<b>Entregar : </b>
-				<h:outputText />
-				<h:outputText value="#{file.data}">
-					<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
-				</h:outputText>
-			</h:column>
-			<h:column>
-				<h:graphicImage styleClass="img-rounded" style="height:200px;"
+				<h:graphicImage styleClass="img-rounded" style="height:300px;"
 					name="img/uploads/#{file.nome}" />
 			</h:column>
 			<h:column>
@@ -72,9 +74,7 @@
 						<f:param name="idturma" value="#{albumMb.turma.id}" />
 
 						<span class=""></span>
-					</h:link>
-				</span>
-				<span> <h:commandLink styleClass="btn btn-danger"
+					</h:link> <h:commandLink styleClass="btn btn-danger"
 						action="#{albumMb.excluir(file.id)}"
 						onclick="return confirm('Tem certeza da exclusão da foto: #{file.nome}')">
 						<f:ajax render="@form" />
@@ -83,14 +83,22 @@
 					</h:commandLink>
 					<div class="col-md-2 col-md-0"></div>
 				</span>
+			
 			</h:column>
+			
 		</h:dataTable>
+		
 	</h:form>
 
 
-	<h:outputScript name="/jquery.min.js" />
-	<h:outputScript name="/menu.js" />
-	<h:outputScript name="/bootstrap/js/bootstrap.js" />
-	<h:outputScript name="/bootstrap/template/offcanvas.js" />
+	<h:outputScript name="../resources/js/datepicker-component.js" />
+	<h:outputScript name="../resources/js/menu.js" />
+	<h:outputStylesheet name="/libs/bootstrap/template/offcanvas.css" />
+	<h:outputScript name="../resources/jquery.min.js" />
+	<h:outputScript name="../resources/js/moment-with-locales.js" />
+	<h:outputScript name="../resources/js/bootstrap.js" />
+	<h:outputScript
+		name="../resources/js/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+	<h:outputScript name="../resources/js/bootstrap/template/offcanvas.js" />
 </h:body>
 </html>

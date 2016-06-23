@@ -12,32 +12,22 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-import entity.Turma;
-import entity.Cliente;
+import entity.Prova;
+import entity.Pergunta;
 
 @Entity
-public class Turma {
+public class Prova {
 	@Id
 	@GeneratedValue
 	private Long id;
 	@Enumerated(EnumType.STRING)
 	private Perfil perfil;
 	private String nome;
-	private Date inicio;
-	private String chamada;
-	public String getChamada() {
-		return chamada;
-	}
-
-	public void setChamada(String chamada) {
-		this.chamada = chamada;
-	}
-
 	private Date termino;
 	@ManyToOne
 	private Cliente professor;
 	@ManyToMany
-	private List<Cliente> clienteTurma;
+	private List<Pergunta> perguntaProva;
 
 	public Long getId() {
 		return id;
@@ -63,14 +53,6 @@ public class Turma {
 		this.nome = nome;
 	}
 
-	public Date getInicio() {
-		return inicio;
-	}
-
-	public void setInicio(Date inicio) {
-		this.inicio = inicio;
-	}
-
 	public Date getTermino() {
 		return termino;
 	}
@@ -78,8 +60,6 @@ public class Turma {
 	public void setTermino(Date termino) {
 		this.termino = termino;
 	}
-
-
 
 	public Cliente getProfessor() {
 		return professor;
@@ -89,12 +69,12 @@ public class Turma {
 		this.professor = professor;
 	}
 
-	public List<Cliente> getClienteTurma() {
-		return clienteTurma;
+	public List<Pergunta> getPerguntaProva() {
+		return perguntaProva;
 	}
 
-	public void setClienteTurma(List<Cliente> clienteTurma) {
-		this.clienteTurma = clienteTurma;
+	public void setPerguntaProva(List<Pergunta> perguntaProva) {
+		this.perguntaProva = perguntaProva;
 	}
 
 	@Override
@@ -113,7 +93,7 @@ public class Turma {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Turma other = (Turma) obj;
+		Prova other = (Prova) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
