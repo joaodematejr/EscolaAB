@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title><ui:insert name="title">PROVA</ui:insert></title>
+	<h:outputStylesheet name="/css/bootstrap.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<h:outputScript name="../resources/js/jquery.min.js" />
+	<h:outputScript name="../resources/js/moment-with-locales.js" />
+	<h:outputScript name="../resources/js/menu.js" />
+	<h:outputScript name="../resources/js/bootstrap.js" />
+	<h:outputScript name="../resources/js/bootstrap-datetimepicker.js" />
+	<h:outputScript name="../resources/js/offcanvas.js" />
+	<link href="resources/css/altecacoes.css" rel="stylesheet" />
+	<link href="../resources/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="../resources/css/ie10-viewport-bug-workaround.css"
+		rel="stylesheet" />
+	<link href="../resources/jumbotron-narrow.css" rel="stylesheet" />
+	<script src="../resources/js/ie-emulation-modes-warning.js" />
+	<script src="../resources/js/jquery.min.js" />
+	<script src="../resources/js/bootstrap.min.js" />
+	<f:metadata>
+		<f:viewParam name="id" value="#{provaMb.editarId}" />
+		<f:event listener="#{provaMb.carregarEdicao}" type="preRenderView" />
+	</f:metadata>
+</h:head>
+<h:body>
+	<div class="container">
+		<div class="header clearfix">
+			<nav>
+			<ul class="nav nav-pills pull-right">
+				<li role="presentation" class="active"><a href="../index.html">Home</a></li>
+				<li role="presentation"><a href="../aluno/aluno.xhtml">Aluno</a></li>
+			</ul>
+			</nav>
+			<h3 class="text-muted">Escola Aprenda brincando</h3>
+		</div>
+		<div class="col-md-3 col-md-offset-0">
+			<h1>
+				Avaliação <small></small>
+			</h1>
+			<h1>
+				<small>  </small>
+				<small> Boa Sorte  </small>
+			</h1>
+		</div>
+		<div class="col-md-6">
+			<h1>
+				<small></small>
+			</h1>
+		</div>
+		<h:messages />
+		<h:form>
+
+			<h:column>
+				<f:facet name="header">Professor</f:facet>
+				<h:outputText value="#{prova.professor.nome}" />
+			</h:column>
+			<div class="col-md-2 ">
+				<h:panelGroup rendered="#{not empty provaMb.prova.id}">
+				</h:panelGroup>
+			</div>
+			<h:inputHidden value="#{provaMb.prova.id}" />
+			<div class="form-group">
+				<div>
+					<div>
+						<div class="col-xs-12 .col-md-9">
+							<h:dataTable styleClass="table-condensed table-hover"
+								id="uiPerguntaprova" value="#{provaMb.prova.perguntaProva}"
+								var="prova">
+								<h:column>
+									<div class="radio">
+										<label><h:outputText value="#{prova.id}" rows="50"
+												class="form-control" /> </label>
+									</div>
+								</h:column>
+								<h:column>
+									<label> <h:outputText value="#{prova.pergunta}"
+											rows="50" class="form-control" />
+									</label>
+									<div class="radio">
+										<label> <input type="radio" name="optionsRadios"
+											id="optionsRadios1" value="option1" /> <h:outputText
+												value="#{prova.correta}" rows="50" class="form-control" />
+										</label>
+									</div>
+									<div class="radio">
+										<label> <input type="radio" name="optionsRadios"
+											id="optionsRadios1" value="option1" /> <h:outputText
+												value="#{prova.primeiraErrada}" rows="50"
+												class="form-control" />
+										</label>
+									</div>
+									<div class="radio">
+										<label> <input type="radio" name="optionsRadios"
+											id="optionsRadios1" value="option1" /> <h:outputText
+												value="#{prova.segundaErrada}" rows="50"
+												class="form-control" />
+										</label>
+									</div>
+									<div class="radio">
+										<label> <input type="radio" name="optionsRadios"
+											id="optionsRadios1" value="option1" /> <h:outputText
+												value="#{prova.terceiraErrada}" rows="50"
+												class="form-control" />
+										</label>
+									</div>
+									<div class="radio">
+										<label> <input type="radio" name="optionsRadios"
+											id="optionsRadios1" value="option1" /> <h:outputText
+												value="#{prova.quartaErrada}" rows="50" class="form-control" />
+										</label>
+									</div>
+									<div class="radio">
+										<label> <input type="radio" name="optionsRadios"
+											id="optionsRadios1" value="option1" /> <h:outputText
+												value="#{prova.quintaErrada}" rows="50" class="form-control" />
+										</label>
+									</div>
+								</h:column>
+
+							</h:dataTable>
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</div>
+
+
+
+
+
+	<!--/.container-->
+	<h:outputScript name="../resources/js/datepicker-component.js" />
+	<h:outputScript name="../resources/js/menu.js" />
+	<h:outputStylesheet name="/libs/css/offcanvas.css" />
+	<h:outputScript name="../resources/js/jquery.min.js" />
+	<h:outputScript name="../resources/js/moment-with-locales.js" />
+	<h:outputScript name="../resources/js/bootstrap.js" />
+	<h:outputScript name="../resources/js/bootstrap-datetimepicker.js" />
+	<h:outputScript name="../resources/js/offcanvas.js" />
+
+
+</h:body>
+</html>

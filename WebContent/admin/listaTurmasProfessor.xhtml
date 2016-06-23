@@ -4,7 +4,6 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
-/>
 <h:head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -61,7 +60,7 @@
 							value="#{turmaMb.listaTurma}" var="turma">
 							
 								<h:column>
-							<f:facet name="header">Ações</f:facet>
+							<f:facet name="header">Documentos</f:facet>
 								<span> <h:link styleClass="btn btn-success"
 										outcome="arquivos">
 										<span class="glyphicon glyphicon-picture"></span>
@@ -69,6 +68,9 @@
 										<f:param name="idturma" value="#{turma.id}" />
 									</h:link>
 								</span>
+								</h:column>
+								<h:column>
+								<f:facet name="header">Prova</f:facet>
 								<span> <h:link styleClass="btn btn-info"
 										outcome="cadastroProva">
 										<span class="glyphicon glyphicon-education"></span>

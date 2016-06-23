@@ -5,31 +5,32 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 <meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title><ui:insert name="title">LISTA DE PROVA</ui:insert></title>
-	<h:outputStylesheet name="/css/bootstrap.css" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link href="css/bootstrap.min.css" rel="stylesheet" />
-	<h:outputScript name="../resources/js/jquery.min.js" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title><ui:insert name="title">PROVAS ALUNOS</ui:insert></title>
+<h:outputStylesheet name="/css/bootstrap.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+<h:outputScript name="../resources/js/jquery.min.js" />
 <h:outputScript name="../resources/js/moment-with-locales.js" />
 <h:outputScript name="../resources/js/menu.js" />
 <h:outputScript name="../resources/js/bootstrap.js" />
 <h:outputScript name="../resources/js/bootstrap-datetimepicker.js" />
 <h:outputScript name="../resources/js/offcanvas.js" />
-<link href="resources/css/altecacoes.css" rel="stylesheet"/>
-<link href="../resources/css/bootstrap.min.css" rel="stylesheet"/>
-<link href="../resources/css/ie10-viewport-bug-workaround.css" rel="stylesheet"/>
-<link href="../resources/jumbotron-narrow.css" rel="stylesheet"/>
-<script src="../resources/js/ie-emulation-modes-warning.js"/>
-<script src="../resources/js/jquery.min.js"/>
-<script src="../resources/js/bootstrap.min.js"/>
+<link href="resources/css/altecacoes.css" rel="stylesheet" />
+<link href="../resources/css/bootstrap.min.css" rel="stylesheet" />
+<link href="../resources/css/ie10-viewport-bug-workaround.css"
+	rel="stylesheet" />
+<link href="../resources/jumbotron-narrow.css" rel="stylesheet" />
+<script src="../resources/js/ie-emulation-modes-warning.js" />
+<script src="../resources/js/jquery.min.js" />
+<script src="../resources/js/bootstrap.min.js" />
 
 <h:head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title><ui:insert name="title">LISTA DAS PROVAS</ui:insert></title>
+	<title><ui:insert name="title">PROVAS ALUNOS</ui:insert></title>
 
 	<f:metadata>
  +		<f:viewParam name="id" value="#{provaMb.editarId}" />
@@ -54,36 +55,36 @@
 		<div class="page-header">
 			<h1>Provas</h1>
 			<h:messages />
-<div class="col-md-11 col-md-11	">
-			<h:form>
-				<table styleClass="table table table-hover">
-					<h:dataTable styleClass="table table table-hover table table-bordered" value="#{provaMb.listaProva}"
-						var="prova">
-						<h:column>
-						<f:facet name="header">Ações</f:facet>
-							<span> <h:link styleClass="btn btn-info"
-									outcome="cadastroProva">
-									<span class="glyphicon glyphicon-pencil"></span>
-									<span>Editar</span>
-									<span class="glyphicon glyphicon-pencil"></span>
-									<f:param name="id" value="#{prova.id}" />
-								</h:link>
-							</span>
-							<span> 
-							</span>
-						</h:column>
-						<h:column>
-							<f:facet name="header">Id Prova</f:facet>
-							<h:outputText value="#{prova.id}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">Professor</f:facet>
-							<h:outputText value="#{prova.professor.nome}" />
-						</h:column>						
-					</h:dataTable>
-				</table>
-			</h:form>
-</div>
+			<div class="col-md-11 col-md-11	">
+				<h:form>
+					<table styleClass="table table table-hover">
+						<h:dataTable
+							styleClass="table table table-hover table table-bordered"
+							value="#{provaMb.listaProva}" var="prova">
+							<h:column>
+								<f:facet name="header">Ações</f:facet>
+								<span> <h:link styleClass="btn btn-info"
+										outcome="provaAluno">
+										<span class="glyphicons glyphicons-send"></span>
+										<span>Responder Prova</span>
+										<span class="glyphicon glyphicon-ok"></span>
+										<f:param name="id" value="#{prova.id}" />
+									</h:link>
+								</span>
+								<span> </span>
+							</h:column>
+							<h:column>
+								<f:facet name="header">Id Prova</f:facet>
+								<h:outputText value="#{prova.id}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">Professor</f:facet>
+								<h:outputText value="#{prova.professor.nome}" />
+							</h:column>
+						</h:dataTable>
+					</table>
+				</h:form>
+			</div>
 		</div>
 
 
